@@ -1,2 +1,2 @@
 ### Leaders
-* [Jinson Varghese Behanan](mailto:jinsonvb@gmail.com)
+* [Jinson Varghese Behanan](mailto:contact@jinsonvarghese.com) (Twitter: [@JinsonCyberSec](https://twitter.com/JinsonCyberSec))
