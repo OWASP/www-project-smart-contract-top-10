@@ -1,17 +1,11 @@
 ### Smart Contract Security Top 10 Information
-* [Incubator Project](#)
-* [Type of Project](#)
-* [Version 0.0.0](#)
-* [Builder](#)
-* [Breaker](#)
+* [Incubator Project](https://owasp.org/projects/)
+* [Version 0.1.0](2023/en/src)
 
-### Downloads or Social Links
-* [Download](#)
-* [Meetup](#)
+
+* [Type of Project: Documentation](#)
+* [Builder](#)
+* [Defender](#)
 
 ### Code Repository
-* [repo](#)
-
-### Change Log
-* [changes](#)
-
+* [Github Repository](https://github.com/OWASP/www-project-smart-contract-security-top-10)
