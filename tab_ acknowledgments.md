@@ -1,6 +1,6 @@
 ---
-title: Contributors
-displaytext: Contributors
+title: Acknowledgments
+displaytext: Acknowledgments
 layout: null
 tab: true
 order: 3
