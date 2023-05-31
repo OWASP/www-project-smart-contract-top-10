@@ -4,27 +4,28 @@ Thank you for taking the time and interest in contributing to the OWASP Smart Co
 
 ### Table of Contents
 
-- [How to contribute](#how-to-contribute)
+- [Ways to Contribute](#ways-to-contribute)
 - [How to reach out](#how-to-reach-out)
 - [Got an idea?](#got-an-idea)
 - [Getting Started with your first Pull Request](#getting-started-with-your-first-pull-request)
 - [Code of Conduct](#code-of-conduct)
 
 
-## How to contribute
+## Ways to Contribute
 
-Here are some ways you can help:
+We're seeking both organizations and individuals who can supply information regarding the most commonly encountered security issues in smart contracts.
 
-- We're seeking both organizations and individuals who can supply information regarding the most commonly encountered security issues in smart contracts
-- Translate the top 10 to non-English languages
+Here are some additional ways you can help:
+
 - Review, critique and suggest improvements to the Top 10 list
 - Star this [GitHub Project](https://github.com/OWASP/www-project-smart-contract-security-top-10)
 - Contribute real world examples to categories in the Top 10 list
-- Add your Success Story - [tell us](mailto:jinson@owasp.org) and the world how you're using the Top 10 list
+- Share your success story. [Tell us](mailto:jinson@owasp.org) and the world how you are using the Top 10 list
+- Translate the top 10 to non-English languages
 
-Individuals and organizations that provide a significant contribution to the project will be listed on the acknowledgments page.
+Individuals and organizations that provide a significant contribution to the project will be listed on the **Contributors** page.
 
-## How to reach out:
+## How to reach out
 
 - Give us feedback / suggestions / report bugs on [GitHub](https://github.com/OWASP/www-project-smart-contract-security-top-10)
 - Contact the [project lead](mailto:jinson@owasp.org)
