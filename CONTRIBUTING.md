@@ -15,7 +15,7 @@ Thank you for taking the time and interest in contributing to the OWASP Smart Co
 
 Here are some ways you can help:
 
-- We're seeking both organizations and individuals who can supply information regarding the most commonly encountered security issues in smart contracts.
+- We're seeking both organizations and individuals who can supply information regarding the most commonly encountered security issues in smart contracts
 - Translate the top 10 to non-English languages
 - Review, critique and suggest improvements to the Top 10 list
 - Star this [GitHub Project](https://github.com/OWASP/www-project-smart-contract-security-top-10)
