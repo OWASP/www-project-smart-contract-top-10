@@ -1,4 +1,4 @@
-### Smart Contract Security Top 10 Information
+### Smart Contract Top 10 Information
 * [Incubator Project](https://owasp.org/projects/)
 * [Version 0.1.0](2023/en/src)
 
@@ -8,4 +8,4 @@
 * Defender
 
 ### Code Repository
-* [Github Repository](https://github.com/OWASP/www-project-smart-contract-security-top-10)
+* [Github Repository](https://github.com/OWASP/www-project-smart-contract-top-10)
