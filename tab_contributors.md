@@ -4,7 +4,7 @@ displaytext: Contributors
 layout: null
 tab: true
 order: 3
-tags: nocode
+tags: smartcontract
 ---
 
 ## Project Lead
