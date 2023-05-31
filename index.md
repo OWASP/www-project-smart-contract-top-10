@@ -8,6 +8,7 @@ type:
 pitch: Welcome to the OWASP Top Ten for Smart Contracts
 
 ---
+![OWASP Smart Contract Logo](https://github.com/jinsonvarghese/test/blob/main/assets/images/OWASP%20Smart%20Contract.png)
 
 ## About the Smart Contract Top 10
 
