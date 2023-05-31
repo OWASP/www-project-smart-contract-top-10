@@ -1,6 +1,6 @@
 ---
-title: Acknowledgments
-displaytext: Acknowledgments
+title: Acknowledgements
+displaytext: Acknowledgements
 layout: null
 tab: true
 order: 3
