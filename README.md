@@ -37,7 +37,7 @@ It will serve as a reference to ensure that smart contracts are secured against 
 | SC10 - Unchecked External Calls | When a contract calls an external function, it may not properly check the result of the call. If the external call fails but the original contract doesn't check for this, it could assume the call was successful and continue its execution, leading to unintended consequences.
 
 ## Getting Involved
-All discussions take place on the OWASP Smart Contract Security Top Ten [GitHub repository](https://github.com/OWASP/www-project-smart-contract-top-10). 
+All discussions take place on the OWASP Smart Contract Top Ten [GitHub repository](https://github.com/OWASP/www-project-smart-contract-top-10). 
 
 We welcome all community members to actively participate and help enhance this project. If you have any suggestions, feedback or want to help improve the list, we invite you to kickstart a dialogue by raising an issue or submitting a pull request.
 
