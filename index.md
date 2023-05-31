@@ -43,13 +43,6 @@ It will serve as a reference to ensure that smart contracts are secured against 
 | SC09 - Gas Limit Vulnerabilities | Each Ethereum block has a gas limit, restricting the number of operations it can include. If a function within a contract requires more gas than this limit, it may become unexecutable, potentially freezing the contract or its funds. |
 | SC10 - Unchecked External Calls | When a contract calls an external function, it may not properly check the result of the call. If the external call fails but the original contract doesn't check for this, it could assume the call was successful and continue its execution, leading to unintended consequences.
 
-## Getting Involved
-All discussions take place on the OWASP Smart Contract Top Ten [GitHub repository](https://github.com/OWASP/www-project-smart-contract-top-10). 
-
-We welcome all community members to actively participate and help enhance this project. If you have any suggestions, feedback or want to help improve the list, we invite you to kickstart a dialogue by raising an issue or submitting a pull request.
-
-You can read our contributing guidelines [here](CONTRIBUTING.md).
-
 ## Licensing
 The OWASP Smart Contract Top 10 document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons
 Attribution-ShareAlike 4.0 license. Some rights reserved.
