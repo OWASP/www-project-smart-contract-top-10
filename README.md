@@ -1,6 +1,6 @@
 ![OWASP Smart Contract Logo](https://github.com/jinsonvarghese/test/blob/main/assets/images/OWASP%20Smart%20Contract.png)
 
-# [OWASP Smart Contract Top 10](https://owasp.org/www-project-owasp-smart-contract-top-ten/)
+# [OWASP Smart Contract Top 10](https://owasp.org/www-project-smart-contract-security-top-10/)
 
 ## About the Smart Contract Top 10
 
