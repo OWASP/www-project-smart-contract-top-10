@@ -6,7 +6,7 @@ Thank you for taking the time and interest in contributing to the OWASP Smart Co
 
 - [Ways to Contribute](#ways-to-contribute)
 - [How to reach out](#how-to-reach-out)
-- [Got an idea?](#got-an-idea)
+- [Got an Idea?](#got-an-idea)
 - [Getting Started with your first Pull Request](#getting-started-with-your-first-pull-request)
 - [Code of Conduct](#code-of-conduct)
 
@@ -30,7 +30,7 @@ Individuals and organizations that provide a significant contribution to the pro
 - Give us feedback / suggestions / report bugs on [GitHub](https://github.com/OWASP/www-project-smart-contract-security-top-10)
 - Contact the [project lead](mailto:jinson@owasp.org)
 
-## Got an idea?
+## Got an Idea?
 
 Got any ideas on how to make this project better? These guidelines will help with how to get involved:
 
