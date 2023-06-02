@@ -2,10 +2,9 @@
 * [Incubator Project](https://owasp.org/projects/)
 * [Version 0.1.0](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2023/en/src)
 
-
-* Type of Project: Documentation
-* Builder
-* Defender
+* <i class="fas fa-book" style="font-size: 1.2em; color:#233e81;"></i><span style="font-size:1.0em;padding-left:12px;">Documentation</span>
+* <i class="fas fa-toolbox" style="font-size: 1.2em; color:#233e81;"></i><span style="font-size:1.0em;padding-left:12px;">Builder</span> 
+* <i class="fas fa-shield-alt" style="font-size: 1.2em; color:#233e81;"></i><span style="font-size:1.0em;padding-left:12px;">Defender</span>
 
 ### Code Repository
 * [Github Repository](https://github.com/OWASP/www-project-smart-contract-top-10)
