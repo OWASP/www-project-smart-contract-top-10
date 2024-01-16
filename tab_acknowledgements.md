@@ -20,3 +20,4 @@ Individuals that provided a significant contribution to the project:
 | Name | Affiliation | Personal Links |
 | --- | --- | --- |
 |  Moises Ruiz Diaz|[Web3 Security Latam](https://www.web3securitylatam.com)  | [Twitter](https://twitter.com/bunturx), [LinkedIn](https://www.linkedin.com/in/bunturx) |
+|  Hansen Wong | - | [Twitter](https://twitter.com/hansen_wong) |
