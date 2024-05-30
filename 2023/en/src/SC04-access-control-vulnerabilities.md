@@ -1,15 +1,23 @@
-# Access Control Vulnerabilities
+## Vulnerability: Improper Access Control 
 
-### Description
-Access control vulnerabilities exist when a contract fails to properly restrict who can call certain functions. This can result in unauthorized function calls.
+### Description:
+An access control vulnerability is a security flaw that allows unauthorized users to access or modify the contract's data or functions. These vulnerabilities arise when the contract's code fails to adequately restrict access based on user permission levels. Access control in smart contracts can relate to governance and critical logic, such as minting tokens, voting on proposals, withdrawing funds, pausing and upgrading the contracts, and changing ownership.
 
-### Impact
-If a contract function isn't protected adequately, unauthorized actors can manipulate the contract state, steal funds, or take other damaging actions.
+### Example (HospoWise Hack):
+```
+function burn(address account, uint256 amount) public { //No proper access control is implemented for the burn function
+        _burn(account, amount);
+    }
+}
+```
+### Impact:
+- Attackers can gain unauthorized access to critical functions and data within the contract, compromising its integrity and security.
+- Vulnerabilities can lead to the theft of funds or assets controlled by the contract, causing significant financial damage to users and stakeholders.
 
-### Steps to Fix
-1. Use access control patterns such as Ownable or RBAC (Role-Based Access Control) in your contracts.
-2. Regularly audit the contract for potential access control vulnerabilities.
-3. Limit the capabilities of individual functions and roles within the contract.
+### Remediation:
+- Ensure initialization functions can only be called once and exclusively by authorized entities.
+- Use established access control patterns like Ownable or RBAC (Role-Based Access Control) in your contracts to manage permissions and ensure that only authorized users can access certain functions. This can be done by adding appropriate access control modifiers, such as `onlyOwner` or custom roles to sensitive functions.
 
-### Example
-The Parity Wallet vulnerability resulted from an unprotected function in a library contract, allowing an attacker to take ownership of the contract and self-destruct it, freezing over 500,000 Ether.
+### Examples of Smart Contracts That Fell Victim to Improper Access Control Attacks:
+1. [HospoWise Hack](https://etherscan.io/address/0x952aa09109e3ce1a66d41dc806d9024a91dd5684#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/access-control-vulnerabilities-in-smart-contracts-a31757f5d707)
+2. [LAND NFT Hack](https://bscscan.com/address/0x1a62fe088F46561bE92BB5F6e83266289b94C154#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/land-hack-analysis-missing-access-control-66fb9555a3e3)
