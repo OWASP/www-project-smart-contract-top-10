@@ -1,14 +1,31 @@
-# Unchecked External Calls
+## Vulnerability: Unchecked External Calls
 
-### Description
-In Ethereum, when a contract calls another contract, the called contract can fail silently without throwing an exception. If the calling contract doesn't check the outcome of the call, it might assume that the call was successful, even if it wasn't.
+### Description:
+Unchecked external calls refer to a security flaw where a contract makes an external call to another contract or address without properly checking the outcome of that call. In Ethereum, when a contract calls another contract, the called contract can fail silently without throwing an exception. If the calling contract doesn’t check the return value, it might incorrectly assume the call was successful, even if it wasn't. This can lead to inconsistencies in the contract state and vulnerabilities that attackers can exploit.
 
-### Impact
-Unchecked external calls can lead to failed transactions, lost funds, or incorrect contract state.
+### Example:
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.4.24;
 
-### Steps to Fix
-1. Always check the return value of `call`, `delegatecall`, and `callcode`.
-2. Use Solidity's `transfer` or `send` functions instead of `call.value()()`, as they automatically reverts on failure.
+contract Proxy {
+    address public owner;
 
-### Example
-A contract uses the `call` function to send Ether to an address. If the call fails (for example, if the recipient is a contract without a payable fallback function), the sending contract might incorrectly assume the transfer was successful.
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    function forward(address callee, bytes _data) public {
+        require(callee.delegatecall(_data));
+    }
+}
+```
+### Impact:
+- Unchecked external calls can result in failed transactions, causing the intended operations to not be completed successfully. This can lead to the loss of funds, as the contract may proceed under the false assumption that the transfer was successful. Additionally, it can create an incorrect contract state, making the contract vulnerable to further exploits and inconsistencies in its logic.
+
+### Remediation:
+- Whenever possible, use transfer() instead of send(), as transfer() reverts the transaction if the external call fails.
+- Always check the return value of send() or call() functions to ensure proper handling if they return false.
+
+### Examples of Smart Contracts That Fell Victim to Unchecked External Call Attacks:
+1. [Punk Protocol Hack](https://github.com/PunkFinance/punk.protocol/blob/master/contracts/models/CompoundModel.sol) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/security-issues-with-delegate-calls-4ae64d775b76)

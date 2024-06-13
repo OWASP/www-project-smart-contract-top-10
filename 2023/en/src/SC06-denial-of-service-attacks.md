@@ -1,15 +1,34 @@
-# Denial of Service (DoS) Attacks
+## Vulnerability: Denial Of Service
 
-### Description
-Denial of Service (DoS) is an attack where an adversary manages to halt the normal operations of a smart contract, making it unavailable to users.
+### Description:
+A Denial of Service (DoS) attack in Solidity involves exploiting vulnerabilities to exhaust resources like gas, CPU cycles, or storage, making a smart contract unusable. Common types include gas exhaustion attacks, where malicious actors create transactions requiring excessive gas, reentrancy attacks that exploit contract call sequences to access unauthorized funds, and block gas limit attacks that consume block gas, hindering legitimate transactions.
 
-### Impact
-A DoS attack can disrupt the functionality of the smart contract, preventing users from interacting with it, and in some cases, resulting in financial loss.
+### Example :
+```
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
 
-### Steps to Fix
-1. Be careful when using the 'send' and 'transfer' functions as they can potentially cause a DoS attack. Use 'call' instead, and handle the potential 'false' return value.
-2. Limit the number of iterations or actions that can be taken in a single transaction to avoid reaching the gas limit.
-3. Implement pull payments for refunds or withdrawals, which separates the process of awarding and withdrawing funds into two separate transactions.
+contract VulnerableKingOfEther {
+    address public king;
+    uint256 public balance;
 
-### Example
-A smart contract auction could become a victim of a DoS attack if the highest bidder is a malicious contract that always throws an exception when the contract tries to refund the second-highest bidder.
+    function claimThrone() external payable {
+        require(msg.value > balance, "Need to pay more to become the king");
+
+        (bool sent,) = king.call{value: balance}("");
+        require(sent, "Failed to send Ether");  // if the current king's fallback function reverts, it will prevent others from becoming the new king, causing a Denial of Service.
+
+        balance = msg.value;
+        king = msg.sender;
+    }
+}
+```
+### Impact:
+- A successful DoS attack can render the smart contract unresponsive, preventing users from interacting with it as intended. This can disrupt critical operations and services relying on the contract.
+-  DoS attacks can lead to financial losses, especially in decentralized applications (dApps) where smart contracts manage funds or assets.
+- A DoS attack can tarnish the reputation of the smart contract and its associated platform. Users may lose trust in the platform's security and reliability, leading to a loss of users and business opportunities.
+  
+### Remediation:
+- Ensure smart contracts can handle consistent failures, such as asynchronous processing of potentially failing external calls, to maintain contract integrity and prevent unexpected behavior.
+- Be cautious when using `call` for external calls, loops, and traversals to avoid excessive gas consumption, which could lead to failed transactions or unexpected costs.
+- Avoid over-authorizing a single role in contract permissions. Instead, divide permissions reasonably and use multi-signature wallet management for roles with critical permissions to prevent permission loss due to private key compromise.
