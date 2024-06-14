@@ -25,7 +25,7 @@ It will serve as a reference to ensure that smart contracts are secured against 
 
 | Title | Description |
 | -- | -- |
-| SC01 - Reentrancy Attacks | This is when an attacker is able to repeatedly call a function within a smart contract, exploiting the fact that the state of the contract hasn't been updated as expected. This could lead to funds or other resources being drained from the contract. |
+| SC01 - Reentrancy Attacks | A reentrancy attack exploits the vulnerability in smart contracts when a function makes an external call to another contract before updating its own state. This allows the external contract, possibly malicious, to reenter the original function and repeat certain actions, like withdrawals, using the same state. Through such attacks, an attacker can possibly drain all the funds from a contract. |
 | SC02 - Integer Overflow and Underflow | These vulnerabilities occur when a numerical operation results in a value that is outside the range of the variable's data type. In a smart contract, this could be exploited to manipulate balances or other critical values. |
 | SC03 - Timestamp Dependence | If a smart contract's behavior relies on the timestamp of the block it's included in, it may be vulnerable to manipulation. This is because miners have a degree of control over the block timestamp. |
 | SC04 - Access Control Vulnerabilities | If a smart contract doesn't properly implement access control, it can leave critical functions exposed. This could allow unauthorized users to perform actions that should be restricted, such as altering the contract's state or withdrawing funds. |
@@ -51,3 +51,5 @@ Attribution-ShareAlike 4.0 license. Some rights reserved.
 
 ## Project Leaders
 - [Jinson Varghese Behanan](mailto:jinson@owasp.org) (Twitter: [@JinsonCyberSec](https://twitter.com/JinsonCyberSec))
+- [Shashank](mailto:shashank@credshields.com) (Twitter: [@cyberboyIndia](https://x.com/cyberboyIndia))
+
