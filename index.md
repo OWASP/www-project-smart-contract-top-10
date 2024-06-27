@@ -41,13 +41,11 @@ It will serve as a reference to ensure that smart contracts are secured against 
 | SC07 - Logic Errors | Logic errors, or business logic vulnerabilities, are subtle flaws found in smart contracts where the code deviates from its intended behavior. These errors can be challenging to detect as they reside within the contract's logic, potentially leading to unintended outcomes or exploitable conditions. |
 | SC08 - Insecure Randomness | Generating true randomness in smart contracts on blockchain networks is challenging due to their deterministic nature. Predictability or influence over a supposedly random number can allow attackers to exploit contracts for their benefit, undermining fairness and security measures. |
 | SC09 - Gas Limit Vulnerabilities | Gas limits on blockchain platforms like Ethereum impose constraints on smart contract computations per transaction. Functions exceeding the block gas limit, particularly those involving loops over dynamic data structures such as arrays, risk transaction failure due to resource exhaustion, highlighting a common vulnerability in contract design. |
-| SC10 - Unchecked External Calls | In Ethereum smart contracts, failing to properly verify the outcome of external function calls can lead to unintended consequences. If the called function fails and the calling contract does not check for this, it may incorrectly proceed under the assumption of success, potentially compromising contract integrity and functionality.
+| SC10 - Unchecked External Calls | In Ethereum smart contracts, failing to properly verify the outcome of external function calls can lead to unintended consequences. If the called function fails and the calling contract does not check for this, it may incorrectly proceed under the assumption of success, potentially compromising contract integrity and functionality. |
 
 ## Licensing
 The OWASP Smart Contract Top 10 document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons
 Attribution-ShareAlike 4.0 license. Some rights reserved.
-
-[![license](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://github.com/OWASP/www-project-smart-contract-security-top-10/blob/master/License.md)
 
 ## Project Leaders
 - [Jinson Varghese Behanan](mailto:jinson@owasp.org) (Twitter: [@JinsonCyberSec](https://twitter.com/JinsonCyberSec))
