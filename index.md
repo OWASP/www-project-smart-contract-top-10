@@ -4,7 +4,7 @@ layout: col-sidebar
 title: OWASP Smart Contract Top 10
 tags: smartcontract
 level: 2
-type: 
+type: documentation
 pitch: Welcome to the OWASP Top Ten for Smart Contracts
 
 ---
