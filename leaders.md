@@ -1,3 +1,3 @@
 ### Leaders
-* [Jinson Varghese Behanan](https://twitter.com/JinsonCyberSec)
+* [Jinson Varghese Behanan](jinson-varghese.behanan@owasp.org)
 * [Shashank](https://x.com/cyberboyIndia)
