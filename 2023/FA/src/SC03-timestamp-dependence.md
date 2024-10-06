@@ -1,9 +1,12 @@
-## Vulnerability: Timestamp Dependence
+## آسیب‌پذیری: Timestamp Dependence
 
-### Description:
-Smart contracts on Ethereum often rely on block.timestamp for time-sensitive functions such as auctions, lotteries, and token vesting. However, block.timestamp is not entirely immutable because it can be adjusted slightly by the miner who mines the block, within a window of approximately 15 seconds according to Ethereum protocol implementations. This creates a vulnerability where a miner could manipulate the timestamp to their advantage. For instance, in a decentralized auction, a miner who is also a bidder could alter the timestamp to prematurely end the auction when they are the highest bidder, thereby securing an unfair win.
+### توضیحات:
+قرادادهای هوشمند در اتریوم اغلب مواقع برای اجرای توابع های وابسته به زمان، ماننده مزایده‌ها،قرعه کشی ها و آزادسازی توکن‌ها(token vesting) از `block.timesatamp` استفاده می‌کنند. این ویژگی کاملا ثابت و تغییر‌ناپذیر نیست، چراکه می‌تواند تا حدی توسط ماینری که بلاک را استخراج می‌کند، در حدود یک بازه 15 ثانیه‌ای (طبق استاندارد اتریوم) تنظیم شود. این موضوع یک آسیب‌پذیری ایجاد می‌کند که در آن یک ماینر می‌تواند به نفع خود زمان را دستکاری کند.
 
-### Example:
+برای مثال، در یک مزایده غیرمتمرکز، ماینری که همزمان یک پیشنهاد دهنده نیز هست، میتواند `timestamp` را دستکاری کند تا مزایده را زودتر از موعد به نفع خود خاتمه دهد.
+
+
+### مثال:
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -27,11 +30,14 @@ contract DiceRoll {
     }
 }
 ```
-### Impact:
-- Smart contracts that use block timestamps for essential operations, such as timed executions, are susceptible to manipulation. Attackers can alter timestamps to trigger functions either prematurely or with delays, disrupting the intended outcomes. This can lead to issues like rewards being issued too early or necessary updates being postponed, destabilizing the contract's operations.
-- By modifying block timestamps, attackers can exploit time-based mechanisms within contracts. For instance, in a lottery game, an attacker could adjust the timestamp to match specific conditions, increasing their chances of winning. Additionally, they could repeatedly execute functions in quick succession, potentially draining the contract's resources or gaining unfair advantages.
-- Timestamp manipulation can facilitate front-running, where attackers execute transactions at strategically advantageous times before others. This predictability, influenced by their controlled timestamps, is particularly damaging in financial contexts. Such actions can result in significant losses for other participants while providing unfair gains to the attacker.
+### شدت آسیب‌پذیری:
+- قراردادهای هوشمندی که از `timestamp` برای عملیات های حساس زمانی استفاده می‌کنند، در معرض دستکاری قراردارند. مهاجمان می‌توانند با تغییر `timestamp`، توابع را زودتر از موعد یا با تاخیر اجرا کنند و نتایج پیش بینی شده را برهم بزنند. این دستکاری می‌تواند منجر به مشکلاتی مانند دریافت پاداش‌ها زودتر از موعد یا به تعویق افتادن به روزرسانی های ضروری شودکه در نتیجه، عملکرد قرارداد را مختل می‌کند.
 
-### Remediation:
-- To mitigate the risks of timestamp manipulation and improve the accuracy and security of smart contracts, it is recommended to use trusted external time sources or multiple time sources. This approach can help ensure more reliable timing.
-- If you need to use block.timestamp, consider adding a time buffer. For example, you could set a rule that an auction will only end when block.timestamp is greater than the auction end time plus an additional minute. This grace period makes it harder for miners to manipulate the end time, providing a fairer outcome for participants.
+- با تغییر در `timestamp`، مهاجمان می‌توانند از مکانیسم های وابسته به زمان در قراردادها سوءاستفاده کنند. برای مثال، در یک قرعه کشی، مهاجم می‌تواند `timestamp` را به شکلی تنظیم کند که با شرایط خاصی همخوانی داشته باشد و شانس برنده شدن خود را افزایش دهد. علاوه بر این، آن‌ها ممکن است توابع را به سرعت و به طور مکرر اجرا کنند و منابع قرارداد را تخلیه کرده یا مزایای نا عادلانه ای به دست آورند.
+
+- دستکاری `timestamp` می‌تواند به حملات front-running کمک کند، جایی که مهاجمان پیش از دیگران و در زمان‌های استراتژیک تراکنش ها را اجرا می‌کنند. این پیش بینی که تحت تاثیر `timestamp` کنترل شده توسط مهاجم است، به ویژه در زمینه‌های مالی آسیب‌زا است. چنین اقداماتی می‌تواند منجر به خسارت‌های قابل توجه برای دیگر مشارکت‌کنندگان و کسب سودهای غیرمنصفانه برای مهاجم شود.
+
+### راهکارهای امنیتی:
+- برای کاهش ریسک‌های ناشی از دستکاری `timestamp` و بهبود دقت و امنیت قراردادهای هوشمند، توصیه می‌شود از منابع زمانی خارجی و معتبر یا چندین منبع زمانی استفاده شود. این رویکرد به اطمینان از زمان‌بندی دقیق‌تر کمک می‌کند.
+
+-اگر ناچار به استفاده از `block.timestamp` هستید، در نظر بگیرید که یک فاصله زمانی(time buffer) اضافه کنید. به عنوان مثال، می‌توانید قانونی تعیین کنید که یک مزایده تنها زمانی پایان یابد که `block.timestamp` بیشتر از زمان پایان مزایده به اضافه یک دقیقه باشد. این ویژگی باعث می‌شود که ماینرها نتوانند به راحتی زمان پایان را دستکاری کنند و نتیجه‌ای عادلانه‌تر برای شرکت‌کنندگان فراهم شود.

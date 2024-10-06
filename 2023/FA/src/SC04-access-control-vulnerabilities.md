@@ -1,23 +1,29 @@
-## Vulnerability: Improper Access Control 
+## آسیب‌پذیری: کنترل دسترسی غیرمجاز (Improper Access Control)
 
-### Description:
-An access control vulnerability is a security flaw that allows unauthorized users to access or modify the contract's data or functions. These vulnerabilities arise when the contract's code fails to adequately restrict access based on user permission levels. Access control in smart contracts can relate to governance and critical logic, such as minting tokens, voting on proposals, withdrawing funds, pausing and upgrading the contracts, and changing ownership.
+### توضیحات:
+ این آسیب‌پذیری یک مشکل امنیتی است که به کاربران غیرمجاز اجازه می‌دهد به داده‌ها یا توابع قرارداد هوشمند دسترسی پیدا کرده یا آن‌ها را تغییر دهند. این نوع آسیب‌پذیری زمانی رخ می‌دهد که کد قرارداد به درستی دسترسی‌ها را بر اساس سطوح مجوز کاربر محدود نمی‌کند. کنترل دسترسی در قراردادهای هوشمند می‌تواند به بخش‌های حیاتی مانند حاکمیت و منطق مهمی مانند مینت کردن توکن‌ها، رأی‌گیری در مورد پیشنهادات، برداشت وجوه، توقف یا به‌روزرسانی قراردادها و تغییر مالکیت مرتبط باشد.
 
-### Example (HospoWise Hack):
+### مثال (HospoWise Hack):
 ```
 function burn(address account, uint256 amount) public { //No proper access control is implemented for the burn function
         _burn(account, amount);
     }
-}
+
 ```
-### Impact:
-- Attackers can gain unauthorized access to critical functions and data within the contract, compromising its integrity and security.
-- Vulnerabilities can lead to the theft of funds or assets controlled by the contract, causing significant financial damage to users and stakeholders.
+### شدت آسیب‌پذیری:
+- مهاجمان می‌توانند به توابع و داده‌های حیاتی درون قرارداد دسترسی غیرمجاز پیدا کنند که این موضوع به اعتبار و امنیت قرارداد آسیب می‌زند.
 
-### Remediation:
-- Ensure initialization functions can only be called once and exclusively by authorized entities.
-- Use established access control patterns like Ownable or RBAC (Role-Based Access Control) in your contracts to manage permissions and ensure that only authorized users can access certain functions. This can be done by adding appropriate access control modifiers, such as `onlyOwner` or custom roles to sensitive functions.
+- این آسیب‌پذیری‌ها می‌توانند منجر به سرقت وجوه یا دارایی‌های تحت کنترل قرارداد شوند و خسارت مالی قابل توجهی به کاربران و ذینفعان وارد کنند.
 
-### Examples of Smart Contracts That Fell Victim to Improper Access Control Attacks:
+
+### راهکارهای امنیتی:
+- مطمعن شوید که توابع اولیه‌ (initialization functions) فقط یک‌بار و به‌طور انحصاری توسط بخش‌های مجاز فراخوانی شوند.
+
+
+- از الگوهای کنترل دسترسی معتبر مانند **Ownable** یا **RBAC** (کنترل دسترسی مبتنی بر نقش) در قراردادهای خود استفاده کنید تا مجوزها را مدیریت کرده و اطمینان حاصل کنید که تنها کاربران مجاز به توابع خاصی دسترسی دارند. این کار می‌تواند با اضافه کردن مدیفایرهای کنترل دسترسی مناسب، مانند `onlyOwner` یا نقش‌های سفارشی به توابع حساس انجام شود.
+
+
+### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات کنترل دسترسی نامناسب شدند:
+
 1. [HospoWise Hack](https://etherscan.io/address/0x952aa09109e3ce1a66d41dc806d9024a91dd5684#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/access-control-vulnerabilities-in-smart-contracts-a31757f5d707)
 2. [LAND NFT Hack](https://bscscan.com/address/0x1a62fe088F46561bE92BB5F6e83266289b94C154#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/land-hack-analysis-missing-access-control-66fb9555a3e3)

@@ -1,9 +1,9 @@
-## Vulnerability: Front-Running Attacks
+## آسیب‌پذیری: حملات Front-Running
 
-### Description: 
-Front-running is a type of attack where a malicious actor exploits knowledge of pending transactions in a blockchain network to gain an unfair advantage. This is particularly prevalent in decentralized finance (DeFi) ecosystems. Attackers observe the mempool (a list of pending transactions) and strategically place their own transactions with higher gas fees to ensure they are processed before the target transaction. This can lead to significant financial losses for the victim and disrupt the intended functionality of the smart contract.
+### توضیحات: 
+حمله front-running زمانی اتفاق می‌افتد که شخصی نسبت به تراکنشی که قرار انجام شود اطلاعاتی دارد و می‌تواند به نفع خودش این موضوع رو پیش ببرد.این نوع حمله به ویژه در پلتفرم های دیفای (DeFi) شایع است. مهاجمان با بررسی تراکنشی های ممپول(mempool) می‌توانند تراکنش مورد نظر خودشان را با پرداخت هزینه بیشتر GAS بالاتر از تراکنش اشخاص دیگر قراردهند و این اطمینان را داشته باشند که تراکنششان زودتر از تراکنش مورد نظر پردازش می‌شود. این موضوع منجر به خسارات مالی قابل توجهی می‌شود.
 
-### Example :
+### مثال :
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -29,14 +29,20 @@ contract VulnerableSwap {
 }
 ```
 
-*Note: In the example above, a user wants to swap BNB for SSToken. However, the function lacks proper slippage checks, making it vulnerable to front-running. An attacker can observe a large swap transaction and insert their own transaction with a higher gas fee to be processed first, causing the victim's transaction to execute at a less favorable rate.*
+*یادداشت: در مثال فوق، کاربری می‌خواهد BNB را با SSToken مبادله کند. با این حال، تابع فاقد بررسی‌های مناسب slippage است و این موضوع قرارداد را در معرض حملات front-running قرار می‌دهد. یک مهاجم می‌تواند یک تراکنش بزرگ مبادله را رصد کرده و تراکنش خود را با هزینه گاز بالاتر قرار دهد تا قبل از تراکنش هدف پردازش شود، که منجر به اجرای تراکنش قربانی با نرخ نامناسب‌تری می‌شود.*
 
-### Impact:
-- Victims can end up paying significantly more for a token or receiving much less than expected due to the manipulated order of transactions.
-- Front-runners can artificially inflate or deflate token prices by executing large trades ahead of others.
+### شدت آسیب پذیری:
+- قربانیان ممکن است به‌طور قابل توجهی برای یک توکن بیشتر پرداخت کنند یا کمتر از آنچه که انتظار داشتند دریافت کنند، به دلیل ترتیب دستکاری‌شده تراکنش‌ها.
+
+- مهاجمان می‌توانند قیمت توکن‌ها را به‌صورت مصنوعی افزایش یا کاهش دهند، با انجام معاملات بزرگ قبل از دیگران.
+
+- 
   
-### Remediation:
-- Implement slippage restrictions between 0.1% and 5%, depending on network fees and swap size, to protect against front-runners exploiting higher slippage rates.
-- Use a two-step process where users commit to an action without revealing details, then disclose the exact information later, making it harder for attackers to anticipate and exploit transactions.
-- Bundle several transactions together and process them as one unit to make it more difficult for attackers to single out and exploit individual trades.
-- Continuously surveil for automated bots and scripts that might exploit front-running opportunities, aiding in early detection and mitigation.
+### راهکارهای امنیتی:
+- پیاده‌سازی محدودیت‌های slippage بین 0.1% و 5%، بسته به هزینه‌های شبکه و اندازه مبادله، برای جلوگیری از سوءاستفاده front-runnerها از نرخ‌های slippage بالاتر.
+
+- استفاده از یک فرایند دو مرحله‌ای که در آن کاربران به یک عمل متعهد می‌شوند بدون اینکه جزئیات را فاش کنند، سپس اطلاعات دقیق را بعداً افشا کنند. این کار پیش‌بینی و سوءاستفاده از تراکنش‌ها را برای مهاجمان دشوارتر می‌کند.
+
+- گروه‌بندی چندین تراکنش و پردازش آن‌ها به‌عنوان یک واحد، که این کار شناسایی و سوءاستفاده از معاملات فردی را برای مهاجمان دشوارتر می‌کند.
+
+- ظارت مستمر بر ربات‌ها و اسکریپت‌های خودکار که ممکن است از فرصت‌های front-running سوءاستفاده کنند، که به شناسایی زودهنگام و کاهش خطر کمک می‌کند.

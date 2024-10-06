@@ -1,7 +1,13 @@
-## Vulnerability: Denial Of Service
+## آسیب‌پذیری: حمله Denial Of Service
 
-### Description:
-A Denial of Service (DoS) attack in Solidity involves exploiting vulnerabilities to exhaust resources like gas, CPU cycles, or storage, making a smart contract unusable. Common types include gas exhaustion attacks, where malicious actors create transactions requiring excessive gas, reentrancy attacks that exploit contract call sequences to access unauthorized funds, and block gas limit attacks that consume block gas, hindering legitimate transactions.
+### توضیحات:
+حمله Denial of Service (DoS) در سالیدیتی شامل سوءاستفاده از آسیب‌پذیری‌ها برای تخلیه منابعی مانند GAS، چرخه‌های CPU یا ذخیره‌سازی است که منجر به غیرقابل استفاده شدن یک قرارداد هوشمند می‌شود. انواع رایج این حملات شامل موارد زیر است:
+
+حملات تخلیه GAS: در این نوع حملات، بازیگران مخرب تراکنش‌هایی ایجاد می‌کنند که نیاز به GAS بیش از حد دارند، که منجر به تخلیه منابع می‌شود.
+
+حملات بازگشتی: این نوع حملات از توالی تماس‌های قرارداد سوءاستفاده می‌کند تا به وجوه غیرمجاز دسترسی پیدا کند.
+
+حملات محدودیت GAS بلوک: در این نوع حملات، منابع GAS بلوک مصرف می‌شود و این موضوع مانع از انجام تراکنش‌های مشروع می‌شود.
 
 ### Example :
 ```

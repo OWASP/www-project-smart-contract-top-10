@@ -1,11 +1,30 @@
-## Vulnerability: Integer Overflow and Underflow
+## آسیب‌پذیری: Integer Overflow and Underflow
 
-### Description:
-Ethereum Virtual Machine (EVM) defines fixed-size data types for integers. This implies that the range of numbers that an integer variable can represent is finite.For instance, a “uint8” (unsigned integer of 8 bits; i.e., non-negative) can only store integers that fall between 0 and 255. The outcome of trying to store any value greater than 255 into an “uint8” will lead to an overflow. Similarly, the outcome of subtracting “1” from “0” will produce 255. This is called underflow.When an arithmetic operation exceeds or falls short of a type’s maximum or minimum size, an overflow or underflow occurs.For signed integers, the outcome will be a bit different. If we try subtracting “1” from an int8 whose value is -128, we get 127. This is because signed int types, which may represent negative values, start over once we reach the highest negative value.Two straightforward examples of this behavior include periodic mathematical functions (adding 2 to the argument of sin leaves the value intact) and odometers in automobiles, which track distance traveled (they reset to 000000 after the maximum number, i.e., 999999, is exceeded).
+### توضیحات:
 
-***Important Note:-
-In Solidity `0.8.0` and above, the compiler automatically handles checking for overflows and underflows in arithmetic operations, reverting the transaction if an overflow or underflow occurs.
-Solidity `0.8.0` also introduces the `unchecked` keyword, which allows developers to perform arithmetic operations without these automatic checks, explicitly permitting overflow without reverting. This can be particularly useful for optimizing gas usage in cases where overflow is not a concern or where the wraparound behavior is desired, similar to how arithmetic behaved in earlier versions of Solidity.***
+ماشین مجازی اتریوم (EVM) از نوع داده‌ای با اندازه ثابت برای integers استفاده می‌کند، این به این معناست که یک متغیر عددی فقط می‌تواند در محدوده مشخصی از اعداد قرار بگیرد.
+
+1. Overflow (سرریز)
+
+به عنوان مثال، اگر از یک نوع متغیر uint8 استفاده کنید، این متغیر فقط می‌تواند 8 بیت را درون خود ذخیره کند یعنی اعداد بین 0 تا 255. اگر شما سعی کنید عددی بزرگتر از 255 در این متغیر ذخیره کنید (مثل 256)، به جای خطا، مقدار آن دوباره به 0 برمی‌گردد. این اتفاق را overflow می‌گویند. همچنین اگر عددی بزرگتر نیز وارد کنید برای مثال 257 مقدار به 1 تغییر می‌کند
+
+جایگذاری تصویر 
+
+1. Underflow (زیرریز):
+
+از سوی دیگر، اگر در یک uint8 که از 0 شروع می‌شود، مقدار 1 را کم کنید، به جای اینکه نتیجه به عدد منفی برسد، مقدار به 255 می‌رسد. این پدیده underflow نامیده می‌شود، یعنی هنگامی که مقدار از حداقل ممکن کمتر می‌شود و به حداکثر مقدار ممکن برمی‌گردد. 
+
+1.مقایسه برای اعداد صحیح  :
+
+برای متغیرهایی مثل int8، اگر به کوچک‌ترین مقدار ممکن یعنی منفی 128 (-128) برسیم و بخواهیم یک واحد از آن کم کنیم، مقدار به 127 می‌رسد. این به این دلیل است که متغیرهای علامت‌دار، پس از رسیدن به بزرگ‌ترین مقدار منفی، به مقدار مثبت بزرگ‌ترین مقدار برمی‌گردند.
+
+
+**نکته مهم :**
+در سالیدیتی `0.8.0` و ورژن بالاتر, کامپایلر به صورت خودکار overflow و underflow را بررسی می‌کند و در صورتی که این اتفاق درحال رخ دادن باشد تراکنش را برمی‌گرداند(revert).
+همچنین در این ورژن از سالیدیتی کلمه کلیدی `unchecked` تعریف شده است که به توسعه دهندگان این اجازه را می‌هد که بدون بررسی خودکار بخشی از کد اجرا شود. درواقع استفاده از `unchecked` زمانی کاربردی  می‌باشد که :
+- موضوع overflow و underflow مشکلی ایجاد نمی‌کنند.
+- رفتار wraparound (یعنی چرخش مقادیر مثل قبل) مورد نیاز است.
+
 
 ### Example:
 ```
@@ -41,14 +60,14 @@ contract TimeWrapVault {
 }
 
 ```
-### Impact:
-- An attacker could exploit such vulnerabilities to artificially increase account balances or token amounts, potentially allowing them to withdraw more funds than they legitimately own.
-- An attacker might alter the intended flow of contract logic, leading to unauthorized actions like stealing assets or minting an excessive number of tokens.
+### شدت آسیب پذیری:
+- مهاجم می‌‌تواند با سوءاستفاده از این آسیب‌پذیری ها، موجودی حساب یا تعداد توکن هارا دستکاری و افزایش دهد و در نتیجه، بتواند بیش از دارایی واقعی خود برداشت انجام دهد..
+- همچنین مهاجم ممکن است منطق قرارداد را تغییر دهد که منجر به اقدامات مانند سرقت دارایی ها یا مینت کردن تعدادی زیادی توکن شود..
 
-### Remediation:
-- The simplest approach is to use Solidity compiler version 0.8.0 or higher, as it automatically handles overflow and underflow checks.
-- Make Use of the latest Safe Math Libraries: For the Ethereum community, OpenZeppelin has done a fantastic job creating and auditing secure libraries. Its SafeMath library, in particular, can be used to prevent under/overflow vulnerabilities. It provides functions like add(), sub(), mul(), etc., that carry out basic arithmetic operations and automatically revert if an overflow or underflow occurs.
+### توصیه های امنیتی:
+- ساده ترین و بهترین روش استفاده از ورژن 0.8.0 یا بالاتر سالیدیتی است، چراکه این نسخه به طور خودکار این موضوع را بررسی و در صورت وقوع، تراکنش را برمی‌گرداند..
+- استفاده از آخرین نسخه کتابخانه SafeMath : این کتابخانه یکی از پروژه هایی که OpenZeppelin ایجاد کرده که می‌تواند برای جلوگیری از این آسیب پذیری استفاده شود.این کتابخانه توابعی مانند `mul`, `sub()`,`add()` و غیره را فراهم می‌کند که عملیات حسابی پایه را انجام داده و در صورت وقعود این آسیب پذیری به طور خودکار تراکنش را بر‌میگرداند.
 
-### Examples of Smart Contracts that fell victim to Integer Overflow and Underflow Attacks:
+### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات Integer Overflow و Underflow شدند::
 1. [PoWH Coin Ponzi Scheme](https://etherscan.io/token/0xa7ca36f7273d4d38fc2aec5a454c497f86728a7a#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/integer-overflow-and-underflow-in-smart-contracts-9598032b5a99)
 2. [Poolz Finance](https://bscscan.com/address/0x8bfaa473a899439d8e07bf86a8c6ce5de42fe54b#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/poolz-finance-hack-analysis-still-experiencing-overflow-fcf35ab8a6c5)
