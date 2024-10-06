@@ -25,16 +25,16 @@ It will serve as a reference to ensure that smart contracts are secured against 
 
 | Title | Description |
 | -- | -- |
-| SC01 - Reentrancy Attacks | This is when an attacker is able to repeatedly call a function within a smart contract, exploiting the fact that the state of the contract hasn't been updated as expected. This could lead to funds or other resources being drained from the contract. |
-| SC02 - Integer Overflow and Underflow | These vulnerabilities occur when a numerical operation results in a value that is outside the range of the variable's data type. In a smart contract, this could be exploited to manipulate balances or other critical values. |
-| SC03 - Timestamp Dependence | If a smart contract's behavior relies on the timestamp of the block it's included in, it may be vulnerable to manipulation. This is because miners have a degree of control over the block timestamp. |
-| SC04 - Access Control Vulnerabilities | If a smart contract doesn't properly implement access control, it can leave critical functions exposed. This could allow unauthorized users to perform actions that should be restricted, such as altering the contract's state or withdrawing funds. |
-| SC05 - Front-running Attacks | Front-running is a vulnerability specific to blockchain systems. An attacker can observe a pending transaction and then issue their own transaction with a higher gas fee, incentivizing miners to include it in the blockchain first. |
-| SC06 - Denial of Service (DoS) Attacks | DoS attacks aim to make a contract unresponsive or otherwise unavailable. In smart contracts, this could be achieved by consuming all available gas, or causing transactions to continually fail. |
-| SC07 - Logic Errors | If a smart contract is poorly coded, it may contain logic errors that lead to unintended behavior. This could range from incorrect calculations to faulty conditional statements, or even exposed administrative functions. |
-| SC08 - Insecure Randomness | Blockchain networks are deterministic by nature, making it difficult to generate true randomness in smart contracts. If an attacker can predict or influence a supposedly random number, they can manipulate the contract to their advantage. |
-| SC09 - Gas Limit Vulnerabilities | Each Ethereum block has a gas limit, restricting the number of operations it can include. If a function within a contract requires more gas than this limit, it may become unexecutable, potentially freezing the contract or its funds. |
-| SC10 - Unchecked External Calls | When a contract calls an external function, it may not properly check the result of the call. If the external call fails but the original contract doesn't check for this, it could assume the call was successful and continue its execution, leading to unintended consequences.
+| SC01 - Reentrancy Attacks | A reentrancy attack exploits the vulnerability in smart contracts when a function makes an external call to another contract before updating its own state. This allows the external contract, possibly malicious, to reenter the original function and repeat certain actions, like withdrawals, using the same state. Through such attacks, an attacker can possibly drain all the funds from a contract. |
+| SC02 - Integer Overflow and Underflow | The Ethereum Virtual Machine (EVM) defines fixed-size data types for integers, which limits the range of values they can represent. Overflow occurs when an arithmetic operation exceeds the maximum value a data type can hold, while underflow happens when an operation goes below the minimum value. For unsigned integers, underflow results in the maximum value, and for signed integers, exceeding the minimum value wraps around to the maximum positive value. |
+| SC03 - Timestamp Dependence | Smart contracts often use block.timestamp for time-sensitive functions. However, miners can slightly adjust this timestamp, creating a vulnerability where they can manipulate the timing to gain an unfair advantage. |
+| SC04 - Access Control Vulnerabilities | An access control vulnerability is a security flaw that allows unauthorized users to access or modify a contract's data or functions. These vulnerabilities occur when the contract's code fails to properly restrict access based on user permissions. |
+| SC05 - Front-running Attacks | Front-running is an attack where a malicious actor exploits knowledge of pending transactions to gain an unfair advantage. Attackers observe the mempool and place their own transactions with higher gas fees to be processed before the target transaction, leading to potential financial losses and disruption of smart contract functionality. |
+| SC06 - Denial of Service (DoS) Attacks | A Denial of Service (DoS) attack in Solidity targets vulnerabilities within smart contracts to exhaust critical resources such as gas, CPU cycles, or storage. These attacks aim to render the contract non-functional, disrupting its intended operation and potentially causing financial harm. |
+| SC07 - Logic Errors | Logic errors, or business logic vulnerabilities, are subtle flaws found in smart contracts where the code deviates from its intended behavior. These errors can be challenging to detect as they reside within the contract's logic, potentially leading to unintended outcomes or exploitable conditions. |
+| SC08 - Insecure Randomness | Generating true randomness in smart contracts on blockchain networks is challenging due to their deterministic nature. Predictability or influence over a supposedly random number can allow attackers to exploit contracts for their benefit, undermining fairness and security measures. |
+| SC09 - Gas Limit Vulnerabilities | Gas limits on blockchain platforms like Ethereum impose constraints on smart contract computations per transaction. Functions exceeding the block gas limit, particularly those involving loops over dynamic data structures such as arrays, risk transaction failure due to resource exhaustion, highlighting a common vulnerability in contract design. |
+| SC10 - Unchecked External Calls | In Ethereum smart contracts, failing to properly verify the outcome of external function calls can lead to unintended consequences. If the called function fails and the calling contract does not check for this, it may incorrectly proceed under the assumption of success, potentially compromising contract integrity and functionality.
 
 ## Getting Involved
 All discussions take place on the OWASP Smart Contract Top Ten [GitHub repository](https://github.com/OWASP/www-project-smart-contract-top-10). 
@@ -47,7 +47,9 @@ You can read our contributing guidelines [here](CONTRIBUTING.md).
 The OWASP Smart Contract Top 10 document is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons
 Attribution-ShareAlike 4.0 license. Some rights reserved.
 
-[![license](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://github.com/OWASP/www-project-smart-contract-security-top-10/blob/master/License.md)
+[![license](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://github.com/OWASP/www-project-smart-contract-top-10/blob/8083e976d6d18013dce2d5e6e62f98e632151a09/LICENSE.md)
 
 ## Project Leaders
 - [Jinson Varghese Behanan](mailto:jinson@owasp.org) (Twitter: [@JinsonCyberSec](https://twitter.com/JinsonCyberSec))
+- [Shashank](mailto:shashank.shashank@owasp.org) (Twitter: [@cyberboyIndia](https://x.com/cyberboyIndia))
+
