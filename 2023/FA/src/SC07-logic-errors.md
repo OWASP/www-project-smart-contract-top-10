@@ -1,9 +1,9 @@
-## Vulnerability: Logic Errors
+## آسیب‌پذیری: خطاهای منطقی (Logic Errors)
 
-### Description: 
-Logic errors, also known as business logic vulnerabilities, are subtle flaws in smart contracts. They occur when the contract's code does not match its intended behavior. These errors are elusive, hiding within the contract's logic and waiting to be discovered.
+### توضیحات: 
+خطاهای منطقی، که به‌عنوان آسیب‌پذیری‌های بیزنس لاجیک نیز شناخته می‌شوند، مشکلات جزئی و پنهانی در قراردادهای هوشمند هستند. این خطاها زمانی رخ می‌دهند که کد قرارداد با رفتار مورد انتظار آن مطابقت ندارد. چنین خطاهایی پیچیده و مبهم بوده و ممکن است در منطق قرارداد پنهان شوند و در آینده کشف گردند.
 
-### Example :
+### مثال :
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -29,14 +29,17 @@ contract LendingPlatform {
     }
 }
 ```
-### Impact:
-- Logic errors can cause a smart contract to behave unexpectedly or even become entirely unusable. These errors can result in the loss of funds, incorrect distribution of tokens, or other adverse outcomes, potentially leading to significant financial and operational consequences for users and stakeholders.
+### شدت آسیب‌پذیری:
+- خطاهای منطقی می‌توانند باعث شوند که یک قرارداد هوشمند رفتار غیرمنتظره‌ای از خود نشان دهد یا حتی به‌طور کامل غیرقابل استفاده شود. این خطاها می‌توانند منجر به از دست رفتن وجوه، توزیع نادرست توکن‌ها یا سایر نتایج نامطلوب شوند و پیامدهای مالی و عملیاتی قابل توجهی برای کاربران و ذی‌نفعان ایجاد کنند.
   
-### Remediation:
-- Always validate your code by writing comprehensive test cases that cover all the possible business logic.
-- Conduct thorough code reviews and audits to identify and fix potential logic errors.
-- Document the intended behavior of each function and module, and then compare it to the actual implementation to ensure alignment.
+### راهکارهای امنیتی:
+- همیشه کد خود را با نوشتن تست‌های جامع که تمام منطق تجاری ممکن را پوشش می‌دهند، اعتبارسنجی کنید.
 
-### Examples of Smart Contracts That Fell Victim to Business Logic Attacks:
+- بررسی دقیق کد و انجام ممیزی‌ها برای شناسایی و رفع خطاهای منطقی احتمالی را انجام دهید.
+
+- رفتار مورد انتظار هر تابع و ماژول را مستند کنید و سپس آن را با پیاده‌سازی واقعی مقایسه کنید تا اطمینان حاصل شود که همه چیز مطابق انتظار است.
+
+
+### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات منطق تجاری شده‌اند:
 1. [Level Finance Hack](https://bscscan.com/address/0x9f00fbd6c095d2c542687ed5afb68d9c3fb2f464#code#F11#L165) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/level-finance-hack-analysis-16fda3996ecb)
 2. [BNO Hack](https://bscscan.com/address/0xdca503449899d5649d32175a255a8835a03e4006#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bno-hack-analysis-15436d73e44e)
