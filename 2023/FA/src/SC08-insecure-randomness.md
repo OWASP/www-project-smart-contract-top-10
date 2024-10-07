@@ -1,18 +1,18 @@
-## Vulnerability: Insecure Randomness
+## آسیب‌پذیری: ایجاد اعداد رندوم نا امن
 
-### Description:
-Random number generators are essential for applications like gambling, game-winner selection, and random seed generation. On Ethereum, generating random numbers is challenging due to its deterministic nature. Since Solidity cannot produce true random numbers, it relies on pseudorandom factors. Additionally, complex calculations in Solidity are costly in terms of gas.
+### توضیحات:
+تولیدکننده‌های اعداد تصادفی برای برنامه‌هایی مانند شرط‌بندی، انتخاب برنده بازی و تولید اعداد تصادفی اولیه بسیار مهم هستند. در شبکه اتریوم، تولید اعداد تصادفی به دلیل ماهیت تعیین‌شده آن یک چالش محسوب می‌شود. از آنجا که Solidity قادر به تولید اعداد تصادفی واقعی نیست، به عوامل شبه‌تصادفی تکیه می‌کند. علاوه بر این، محاسبات پیچیده در Solidity از نظر مصرف گس هزینه‌بر هستند.
 
-*Insecure Mechanisms Create Random Numbers in Solidity: Developers often use block-related methods to generate random numbers, such as:*
-  - block.timestamp: Current block timestamp.
-  - blockhash(uint blockNumber): Hash of a given block (only for the last 256 blocks).
-  - block.difficulty: Current block difficulty.
-  - block.number: Current block number.
-  - block.coinbase: Address of the current block’s miner.
-    
-These methods are insecure because miners can manipulate them, affecting the contract’s logic.
+*مکانیسم‌های ناامن برای تولید اعداد تصادفی در Solidity: توسعه‌دهندگان اغلب از روش‌های مرتبط با بلاک برای تولید اعداد تصادفی استفاده می‌کنند، از جمله::*
+  - block.timestamp: زمان‌بندی بلاک فعلی.
+  - blockhash(uint blockNumber): هش یک بلاک مشخص (تنها برای ۲۵۶ بلاک اخیر)
+  - block.difficulty: سختی بلاک فعلی
+  - block.number: شماره بلاک فعلی
+  - block.coinbase: آدرس ماینر بلاک فعلی
 
-### Example :
+این روش‌ها ناامن هستند زیرا ماینرها می‌توانند این مقادیر را دستکاری کنند و در نتیجه منطق قرارداد را تحت تأثیر قرار دهند.
+
+### مثال :
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
@@ -35,15 +35,20 @@ contract InsecureRandomNumber {
 }
 ```
 ### Impact:
-- Insecure randomness can be exploited by attackers to gain an unfair advantage in games, lotteries, and any other contracts that rely on random number generation. By predicting or manipulating the supposedly random outcomes, attackers can influence the results in their favor. This can lead to unfair wins, financial losses for other participants, and a general lack of trust in the smart contract's integrity and fairness. 
+- تصادفی‌سازی ناامن می‌تواند توسط مهاجمان برای کسب مزیت ناعادلانه در بازی‌ها، قرعه‌کشی‌ها و سایر قراردادهایی که به تولید اعداد تصادفی وابسته هستند، مورد سوءاستفاده قرار گیرد. مهاجمان با پیش‌بینی یا دستکاری نتایج به‌ظاهر تصادفی، می‌توانند نتایج را به نفع خود تغییر دهند. این امر می‌تواند به پیروزی‌های ناعادلانه، زیان‌های مالی برای سایر شرکت‌کنندگان و کاهش اعتماد به یکپارچگی و انصاف قرارداد هوشمند منجر شود.
 
 ### Remediation:
-- Using oracles (Oraclize) as external sources of randomness. Care should be taken while trusting the Oracle. Multiple Oracles can also be used.
-- Using Commitment Schemes — A cryptographic primitive that uses a commit-reveal approach can be followed. It also has wide applications in coin flipping, zero-knowledge proofs, and secure computation. E.g.: RANDAO.
-- Chainlink VRF — It is a provably fair and verifiable random number generator (RNG) that enables smart contracts to access random values without compromising security or usability.
-- The Signidice Algorithm — Suitable for PRNG in applications involving two parties using cryptographic signatures.
-- Bitcoin Block Hashes — Oracles like BTCRelay can be used which act as a bridge between Ethereum and Bitcoin. Contracts on Ethereum can request future block hashes from the Bitcoin Blockchain as a source of entropy. It should be noted that this approach is not safe against the miner incentive problem and should be implemented with caution.
+- استفاده از اوراکل‌ها (Oraclize) به عنوان منابع خارجی تصادفی‌سازی. باید دقت کرد که به اوراکل اطمینان کامل شود. استفاده از چندین اوراکل نیز می‌تواند کمک کند.
+  
+- استفاده از طرح‌های تعهدی(Commitment Schemes): یک ابتدایی رمزنگاری که از روش commit-reveal (تعهد-افشا) پیروی می‌کند. این روش در مواردی مانند پرتاب سکه، اثبات‌های بدون دانش (zero-knowledge proofs)، و محاسبات ایمن کاربرد دارد. مانند: RANDAO.
+  
+- استفاده از Chainlink VRF — یک تولیدکننده اعداد تصادفی اثبات‌شده و قابل‌تأیید است که به قراردادهای هوشمند اجازه دسترسی به مقادیر تصادفی را می‌دهد بدون آنکه امنیت یا کارایی به خطر بیافتد.
+- 
+- الگوریتم Signidice — برای تولید اعداد شبه‌تصادفی در برنامه‌هایی که شامل دو طرف هستند با استفاده از امضاهای رمزنگاری مناسب است.
+  
+- استفاده از هش بلاک بیت‌کوین — اوراکل‌هایی مانند BTCRelay که به عنوان پلی بین اتریوم و بیت‌کوین عمل می‌کنند. قراردادهای اتریوم می‌توانند از بلاک‌های آینده بیت‌کوین به عنوان منبعی برای تصادفی‌سازی استفاده کنند. باید توجه داشت که این روش در برابر مشکلات انگیزشی ماینرها ایمن نیست و باید با احتیاط پیاده‌سازی شود.
 
-### Examples of Smart Contracts That Fell Victim to Insecure Randomness Attacks:
+### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات تصادفی‌سازی ناامن شده‌اند:
+
 1. [Roast Football Hack](https://bscscan.com/address/0x26f1457f067bf26881f311833391b52ca871a4b5#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/roast-football-hack-analysis-e9316170c443)
 2. [FFIST Hack](https://bscscan.com/address/0x80121da952a74c06adc1d7f85a237089b57af347#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/ffist-hack-analysis-9cb695c0fad9)
