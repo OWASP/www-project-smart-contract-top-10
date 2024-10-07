@@ -3,13 +3,13 @@
 ### توضیحات:
 حمله Denial of Service (DoS) در سالیدیتی شامل سوءاستفاده از آسیب‌پذیری‌ها برای تخلیه منابعی مانند GAS، چرخه‌های CPU یا ذخیره‌سازی است که منجر به غیرقابل استفاده شدن یک قرارداد هوشمند می‌شود. انواع رایج این حملات شامل موارد زیر است:
 
-حملات تخلیه GAS: در این نوع حملات، بازیگران مخرب تراکنش‌هایی ایجاد می‌کنند که نیاز به GAS بیش از حد دارند، که منجر به تخلیه منابع می‌شود.
+حملات تخلیه گس: در این نوع حملات، بازیگران مخرب تراکنش‌هایی ایجاد می‌کنند که نیاز به گس بیش از حد دارند، که منجر به تخلیه منابع می‌شود.
 
 حملات بازگشتی: این نوع حملات از توالی تماس‌های قرارداد سوءاستفاده می‌کند تا به وجوه غیرمجاز دسترسی پیدا کند.
 
-حملات محدودیت GAS بلوک: در این نوع حملات، منابع GAS بلوک مصرف می‌شود و این موضوع مانع از انجام تراکنش‌های مشروع می‌شود.
+حملات محدودیت گس بلاک: در این نوع حملات، منابع گس بلاک مصرف می‌شود و این موضوع مانع از انجام تراکنش‌های مشروع می‌شود.
 
-### Example :
+### مثال :
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
@@ -29,12 +29,12 @@ contract VulnerableKingOfEther {
     }
 }
 ```
-### Impact:
-- A successful DoS attack can render the smart contract unresponsive, preventing users from interacting with it as intended. This can disrupt critical operations and services relying on the contract.
--  DoS attacks can lead to financial losses, especially in decentralized applications (dApps) where smart contracts manage funds or assets.
-- A DoS attack can tarnish the reputation of the smart contract and its associated platform. Users may lose trust in the platform's security and reliability, leading to a loss of users and business opportunities.
+### شدت آسیب‌پذیری:
+- یک حمله DoS موفق می‌تواند قرارداد هوشمند را غیرقابل پاسخگویی کند و کاربران را از تعامل با آن طبق انتظار بازدارد. این موضوع می‌تواند باعث اختلال در عملیات و خدمات حیاتی که به قرارداد وابسته هستند، شود.
+-  حملات DoS می‌توانند منجر به خسارات مالی شوند، به‌ویژه در برنامه‌های غیرمتمرکز (dApps) که قراردادهای هوشمند در آن‌ها مدیریت وجوه یا دارایی‌ها را بر عهده دارند.
+- یک حمله DoS می‌تواند به اعتبار قرارداد هوشمند و پلتفرم مرتبط با آن آسیب بزند. کاربران ممکن است اعتماد خود را به امنیت و قابلیت اطمینان پلتفرم از دست بدهند و این موضوع منجر به از دست دادن کاربران و فرصت‌های تجاری شود.
   
-### Remediation:
-- Ensure smart contracts can handle consistent failures, such as asynchronous processing of potentially failing external calls, to maintain contract integrity and prevent unexpected behavior.
-- Be cautious when using `call` for external calls, loops, and traversals to avoid excessive gas consumption, which could lead to failed transactions or unexpected costs.
-- Avoid over-authorizing a single role in contract permissions. Instead, divide permissions reasonably and use multi-signature wallet management for roles with critical permissions to prevent permission loss due to private key compromise.
+### راهکارهای امنیتی:
+- اطمینان حاصل کنید که قراردادهای هوشمند می‌توانند خرابی‌های مداوم، مانند پردازش ناهمزمان فراخوانی‌های خارجی که ممکن است شکست بخورند، را به‌خوبی مدیریت کنند تا یکپارچگی قرارداد حفظ شود و از رفتار غیرمنتظره جلوگیری شود.
+- در استفاده از `call` برای فراخوانی‌های خارجی، حلقه‌ها و پیمایش‌ها، دقت داشته باشید تا از مصرف بیش از حد گاز که می‌تواند منجر به شکست تراکنش‌ها یا هزینه‌های غیرمنتظره شود، جلوگیری کنید.
+- از اعطای دسترسی بیش از حد به یک نقش خاص در مجوزهای قرارداد خودداری کنید. به‌جای آن، دسترسی‌ها را به‌صورت منطقی تقسیم کنید و از کیف‌پول‌های چند امضایی برای مدیریت نقش‌هایی با مجوزهای حساس استفاده کنید تا از دست دادن مجوزها به دلیل افشای کلید خصوصی جلوگیری شود.
