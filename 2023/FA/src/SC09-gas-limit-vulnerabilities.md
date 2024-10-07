@@ -1,7 +1,7 @@
-## Vulnerability: Gas Limit Vulnerabilities
+## آسیب‌پذیری: آسیب‌پذیری‌های محدودیت گس
 
-### Description: 
-In Ethereum and other blockchain platforms, every operation performed by a smart contract consumes a certain amount of gas, which is a unit of computational effort. The block gas limit is the maximum amount of gas that can be used in a single block. If a function in a smart contract requires more gas than the block gas limit to complete its execution, the transaction will fail. This type of vulnerability is particularly common in loops that iterate over dynamic data structures, such as arrays or lists, where the number of iterations is not fixed and can grow arbitrarily large.
+### توضیحات: 
+در اتریوم و دیگر پلتفرم‌های بلاکچینی، هر عملیات انجام شده توسط یک قرارداد هوشمند مقدار مشخصی گس مصرف می‌کند که یک واحد تلاش محاسباتی است. محدودیت گس بلاک حداکثر مقدار گسی است که می‌تواند در یک بلاک استفاده شود. اگر یک تابع در قرارداد هوشمند برای تکمیل اجرای خود به گسی بیشتر از محدودیت گس بلاک نیاز داشته باشد، تراکنش با شکست مواجه می‌شود. این نوع آسیب‌پذیری به‌ویژه در حلقه‌هایی که روی ساختارهای داده داینامیک مانند آرایه‌ها یا لیست‌ها تکرار می‌کنند رایج است، جایی که تعداد تکرارها ثابت نیست و می‌تواند به‌صورت دلخواه زیاد شود.
 
 ### Example :
 ```
@@ -21,10 +21,11 @@ contract TokenTransfer {
     }
 }
 ```
-### Impact:
-- Functions that are susceptible to gas limit issues can become unexecutable, resulting in locked funds or a frozen contract state. When these functions fail to complete due to exceeding the gas limit, any funds associated with the transaction remain inaccessible, effectively locking them within the contract.  
+### شدت آسیب‌پذیری:
+- توابعی که به مشکلات محدودیت گس حساس هستند ممکن است غیرقابل اجرا شوند و منجر به قفل شدن وجوه یا فریزشدن وضعیت قرارداد شوند. وقتی این توابع به دلیل فراتر از حد مجاز گس نتوانند به پایان برسند، هرگونه وجه مرتبط با تراکنش غیرقابل دسترس می‌شود و عملاً در داخل قرارداد قفل می‌گردد.
 
-### Remediation:
-- The functions should validate that the users can’t control the variable length used inside the loop to traverse a large amount of data. If it can’t be omitted, then there should be a limit on the length as per the code logic.
-- Whenever loops are used in Solidity, the developers should pay special attention to the actions happening inside the loop to make sure that the transaction does not consume excessive gas and does not go over the gas limit.
+### راهکارهای امنیتی:
+- توابع باید اعتبارسنجی کنند که کاربران نمی‌توانند طول متغیر استفاده‌شده در حلقه را کنترل کنند که باعث پیمایش مقدار زیادی داده شود. اگر حذف آن ممکن نباشد، باید محدودیتی برای طول آن مطابق با منطق کد تعریف شود.
+  
+- هر زمان که در Solidity از حلقه‌ها استفاده می‌شود، توسعه‌دهندگان باید به‌دقت اقدامات انجام‌شده در داخل حلقه را بررسی کنند تا مطمئن شوند که تراکنش گس بیش از حد مصرف نمی‌کند و از حد گس تجاوز نمی‌کند.
 
