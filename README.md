@@ -1,4 +1,4 @@
-![OWASP Smart Contract Logo](https://github.com/OWASP/www-project-smart-contract-top-10/blob/main/assets/images/OWASP%20Smart%20Contract.png)
+![OWASP Logo](assets/images/OWASP_Logo.png)
 
 # [OWASP Smart Contract Top 10](https://owasp.org/www-project-smart-contract-top-10/)
 
