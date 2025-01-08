@@ -8,6 +8,11 @@ The OWASP Smart Contract Top 10 (2025) is a standard awareness document providin
 
 It serves as a reference to ensure that smart contracts are secured against the most critical weaknesses exploited or discovered in recent years.
 
+## Changes
+
+
+![OWASP 2023 to 2025 Changes](assets/images/owasp23-25-changes.png)
+
 ### Top 10
 
 * SC01:2025 - [Access Control Vulnerabilities](2025/en/src/SC01-access-control.md)
