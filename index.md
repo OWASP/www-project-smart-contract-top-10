@@ -21,12 +21,12 @@ It serves as a reference to ensure that smart contracts are secured against the 
 ## Changes
 
 
-![OWASP 2023 to 2025 Changes](assets/images/owasp23-25-changes.png)
+![OWASP 2023 to 2025 Changes](assets/images/Mapping2023-2025.png)
 
 ### Top 10
 
 * SC01:2025 - [Access Control Vulnerabilities](2025/en/src/SC01-access-control.md)
-* SC02:2025 - [Oracle Price Manipulation](2025/en/src/SC02-oracle-price-manipulation.md)
+* SC02:2025 - [Price Oracle Manipulation](2025/en/src/SC02-price-oracle-manipulation.md)
 * SC03:2025 - [Logic Errors](2025/en/src/SC03-logic-errors.md)
 * SC04:2025 - [Lack of Input Validation](2025/en/src/SC04-lack-of-input-validation.md)
 * SC05:2025 - [Reentrancy Attacks](2025/en/src/SC05-reentrancy-attacks.md)
@@ -41,7 +41,7 @@ It serves as a reference to ensure that smart contracts are secured against the 
 | Title | Description |
 | -- | -- |
 | SC01 - Access Control Vulnerabilities | Access control flaws allow unauthorized users to access or modify a contract's data or functions. These vulnerabilities arise when the code fails to enforce proper permission checks, potentially leading to severe security breaches. |
-| SC02 - Oracle Price Manipulation | Oracle price manipulation exploits vulnerabilities in how smart contracts fetch external data. By tampering with or controlling oracle feeds, attackers can affect contract logic, leading to financial losses or system instability. |
+| SC02 - Price Oracle Manipulation | Price Oracle Manipulation exploits vulnerabilities in how smart contracts fetch external data. By tampering with or controlling oracle feeds, attackers can affect contract logic, leading to financial losses or system instability. |
 | SC03 - Logic Errors | Logic errors, or business logic vulnerabilities, occur when a contract's behavior deviates from its intended functionality. Examples include incorrect reward distribution, token minting issues, or flawed lending/borrowing logic. |
 | SC04 - Lack of Input Validation | Insufficient input validation can lead to vulnerabilities where an attacker may manipulate the contract by providing harmful or unexpected inputs, potentially breaking logic or causing unexpected behaviors. |
 | SC05 - Reentrancy Attacks | Reentrancy attacks exploit the ability to reenter a vulnerable function before its execution is complete. This can lead to repeated state changes, often resulting in drained contract funds or broken logic. |
@@ -50,6 +50,31 @@ It serves as a reference to ensure that smart contracts are secured against the 
 | SC08 - Integer Overflow and Underflow | Arithmetic errors due to exceeding the limits of fixed-size integers can lead to serious vulnerabilities, such as incorrect calculations or token theft. Unsigned integers wrap around on underflow, while signed integers flip between extremes. |
 | SC09 - Insecure Randomness | Due to the deterministic nature of blockchain networks, generating secure randomness is challenging. Predictable or manipulable randomness can lead to exploitation in lotteries, token distributions, or other randomness-dependent functionalities. |
 | SC10 - Denial of Service (DoS) Attacks | DoS attacks exploit vulnerabilities to exhaust contract resources, rendering it non-functional. Examples include excessive gas consumption in loops or function calls designed to disrupt normal contract operation. |
+
+## Data Sources
+
+### SolidityScan's Web3HackHub:
+
+To identify and validate the OWASP Smart Contract Top 10 vulnerabilities, we incorporated insights from multiple authoritative sources, with a notable focus on **[SolidityScan's Web3HackHub](https://solidityscan.com/web3hackhub?year=2024)(2024)**. This resource provides a comprehensive database of blockchain-related incidents, offering valuable data on attack vectors, financial losses, and trends. 
+
+Web3HackHub documents breaches from 2011 onward, enabling analysis of evolving attack methods, the increasing sophistication of exploits, and lessons learned from each incident.
+
+
+**Key highlights from Web3HackHub for 2024 include:**
+
+- Total Financial Impact: $1.42 billion lost across 149 documented incidents in 2024.
+
+- Top Attack Vectors (by frequency, total losses):
+    - Access Control Vulnerabilities: $953.2M in losses.
+    - Logic Errors: $63.8M in losses.
+    - Reentrancy Attacks: $35.7M in losses.
+    - Flash Loan Attacks: $33.8M in losses.
+    - Lack of Input Validation: $14.6M in losses.
+    - Price Oracle Manipulation: $8.8M in losses. 
+    - Unchecked External Calls: $550.7K in losses.
+
+[![web3hackhub](assets/images/web3hackhub-snap.png)](https://solidityscan.com/web3hackhub)
+
 
 ## Licensing
 The OWASP Smart Contract Top 10 (2025) is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons Attribution-ShareAlike 4.0 license. Some rights reserved.

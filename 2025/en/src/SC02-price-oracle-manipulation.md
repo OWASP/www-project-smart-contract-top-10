@@ -1,7 +1,7 @@
-# SC02:2025 - Oracle Price Manipulation
+# SC02:2025 - Price Oracle Manipulation
 
 ## Description:
-Oracle price manipulation is a critical vulnerability in smart contracts that rely on external data feeds (oracles) to fetch prices or other information. In decentralized finance (DeFi), oracles are used to provide real-world data, such as asset prices, to smart contracts. However, if the data provided by the oracle is manipulated, it can result in incorrect contract behavior. Attackers can exploit oracles by manipulating the data they supply, leading to devastating consequences such as unauthorized withdrawals, excessive leverage, or even draining liquidity pools. Proper safeguards and validation mechanisms are essential to prevent this type of attack.
+Price Oracle Manipulation is a critical vulnerability in smart contracts that rely on external data feeds (oracles) to fetch prices or other information. In decentralized finance (DeFi), oracles are used to provide real-world data, such as asset prices, to smart contracts. However, if the data provided by the oracle is manipulated, it can result in incorrect contract behavior. Attackers can exploit oracles by manipulating the data they supply, leading to devastating consequences such as unauthorized withdrawals, excessive leverage, or even draining liquidity pools. Proper safeguards and validation mechanisms are essential to prevent this type of attack.
 Example (Vulnerable contract):
 
 ## Example (Vulnerable Contract):
@@ -14,7 +14,7 @@ interface IPriceFeed {
     function getLatestPrice() external view returns (int);
 }
 
-contract OraclePriceManipulation {
+contract PriceOracleManipulation {
     address public owner;
     IPriceFeed public priceFeed;
 
@@ -61,7 +61,7 @@ interface IPriceFeed {
     function getLatestPrice() external view returns (int);
 }
 
-contract OraclePriceManipulation {
+contract PriceOracleManipulation {
     address public owner;
     IPriceFeed public priceFeed;
     int public minPrice = 1000; // Set minimum acceptable price
@@ -87,5 +87,6 @@ contract OraclePriceManipulation {
 }
 ```
 
-### Examples of Smart Contracts that fell victim to Oracle Price Manipulation Attacks :
-1. [BonqDAO Protocol](https://polygonscan.com/address/0x4248fd3e2c055a02117eb13de4276170003ca295#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bonqdao-protocol-hack-analysis-oracle-manipulation-8e6978149a66)
+### Examples of Smart Contracts that fell victim to Price Oracle Manipulation Attacks :
+1. [Polter Finance Hack Analysis](https://blog.solidityscan.com/polter-finance-hack-analysis-c5eaa6dcfd40) 
+2. [BonqDAO Protocol](https://polygonscan.com/address/0x4248fd3e2c055a02117eb13de4276170003ca295#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bonqdao-protocol-hack-analysis-oracle-manipulation-8e6978149a66)

@@ -11,12 +11,12 @@ It serves as a reference to ensure that smart contracts are secured against the 
 ## Changes
 
 
-![OWASP 2023 to 2025 Changes](assets/images/owasp23-25-changes.png)
+![OWASP 2023 to 2025 Changes](assets/images/Mapping2023-2025.png)
 
 ### Top 10
 
 * SC01:2025 - [Access Control Vulnerabilities](2025/en/src/SC01-access-control.md)
-* SC02:2025 - [Oracle Price Manipulation](2025/en/src/SC02-oracle-price-manipulation.md)
+* SC02:2025 - [Price Oracle Manipulation](2025/en/src/SC02-price-oracle-manipulation.md)
 * SC03:2025 - [Logic Errors](2025/en/src/SC03-logic-errors.md)
 * SC04:2025 - [Lack of Input Validation](2025/en/src/SC04-lack-of-input-validation.md)
 * SC05:2025 - [Reentrancy Attacks](2025/en/src/SC05-reentrancy-attacks.md)
@@ -31,7 +31,7 @@ It serves as a reference to ensure that smart contracts are secured against the 
 | Title | Description |
 | -- | -- |
 | SC01 - Access Control Vulnerabilities | Access control flaws allow unauthorized users to access or modify a contract's data or functions. These vulnerabilities arise when the code fails to enforce proper permission checks, potentially leading to severe security breaches. |
-| SC02 - Oracle Price Manipulation | Oracle price manipulation exploits vulnerabilities in how smart contracts fetch external data. By tampering with or controlling oracle feeds, attackers can affect contract logic, leading to financial losses or system instability. |
+| SC02 - Price Oracle Manipulation | Price Oracle Manipulation exploits vulnerabilities in how smart contracts fetch external data. By tampering with or controlling oracle feeds, attackers can affect contract logic, leading to financial losses or system instability. |
 | SC03 - Logic Errors | Logic errors, or business logic vulnerabilities, occur when a contract's behavior deviates from its intended functionality. Examples include incorrect reward distribution, token minting issues, or flawed lending/borrowing logic. |
 | SC04 - Lack of Input Validation | Insufficient input validation can lead to vulnerabilities where an attacker may manipulate the contract by providing harmful or unexpected inputs, potentially breaking logic or causing unexpected behaviors. |
 | SC05 - Reentrancy Attacks | Reentrancy attacks exploit the ability to reenter a vulnerable function before its execution is complete. This can lead to repeated state changes, often resulting in drained contract funds or broken logic. |
