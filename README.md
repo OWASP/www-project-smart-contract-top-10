@@ -41,6 +41,32 @@ It serves as a reference to ensure that smart contracts are secured against the 
 | SC09 - Insecure Randomness | Due to the deterministic nature of blockchain networks, generating secure randomness is challenging. Predictable or manipulable randomness can lead to exploitation in lotteries, token distributions, or other randomness-dependent functionalities. |
 | SC10 - Denial of Service (DoS) Attacks | DoS attacks exploit vulnerabilities to exhaust contract resources, rendering it non-functional. Examples include excessive gas consumption in loops or function calls designed to disrupt normal contract operation. |
 
+
+## Data Sources
+
+### SolidityScan's Web3HackHub:
+
+To identify and validate the OWASP Smart Contract Top 10 vulnerabilities, we incorporated insights from multiple authoritative sources, with a notable focus on **[SolidityScan's Web3HackHub](https://solidityscan.com/web3hackhub?year=2024)(2024)**. This resource provides a comprehensive database of blockchain-related incidents, offering valuable data on attack vectors, financial losses, and trends. 
+
+Web3HackHub documents breaches from 2011 onward, enabling analysis of evolving attack methods, the increasing sophistication of exploits, and lessons learned from each incident.
+
+
+**Key highlights from Web3HackHub for 2024 include:**
+
+- Total Financial Impact: $1.42 billion lost across 149 documented incidents in 2024.
+
+- Top Attack Vectors (by frequency, total losses):
+    - Access Control Vulnerabilities: $953.2M in losses.
+    - Logic Errors: $63.8M in losses.
+    - Reentrancy Attacks: $35.7M in losses.
+    - Flash Loan Attacks: $33.8M in losses.
+    - Lack of Input Validation: $14.6M in losses.
+    - Price Oracle Manipulation: $8.8M in losses. 
+    - Unchecked External Calls: $550.7K in losses.
+
+[![web3hackhub](assets/images/web3hackhub-snap.png)](https://solidityscan.com/web3hackhub)
+
+
 ## Licensing
 The OWASP Smart Contract Top 10 (2025) is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons Attribution-ShareAlike 4.0 license. Some rights reserved.
 
