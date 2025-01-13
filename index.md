@@ -75,6 +75,13 @@ Web3HackHub documents breaches from 2011 onward, enabling analysis of evolving a
 
 [![web3hackhub](assets/images/web3hackhub-snap.png)](https://solidityscan.com/web3hackhub)
 
+In addition to SolidityScan's Web3HackHub, incorporating insights from [Peter Kacherginsky's "Top 10 DeFi Attack Vectors - 2024"](https://x.com/_iphelix/status/1855855006219690233) provides valuable data for creating the OWASP Smart Contract Top 10 for 2025. Peter's analysis can be instrumental in understanding the evolving threat landscape and aligning the OWASP Smart Contract Top 10 with real-world observations.
+
+By integrating data from both SolidityScan's Web3HackHub and Kacherginsky's "Top 10 DeFi Attack Vectors - 2024," we were able to provide a well-rounded justification for the 2025 rankings. 
+
+After analyzing **149 security incidents from SolidityScan's Web3HackHub (2024)**, **Peter Kacherginsky's "Top 10 DeFi Attack Vectors - 2024"**, and the **[Immunefi Crypto Losses in 2024 Report](https://downloads.ctfassets.net/t3wqy70tc3bv/2LqNkvjajiCS5sPJmWLakc/9715af967dd95a55da05d2ad373edb0d/Immunefi_Crypto_Losses_in_2024_Report.pdf)**, which collectively document over **$1.42 billion in financial losses across decentralized ecosystems**,the **OWASP Smart Contract Top 10 for 2025** to address the most critical vulnerabilities in the blockchain and smart contract ecosystem was created.
+
+
 
 ## Licensing
 The OWASP Smart Contract Top 10 (2025) is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons Attribution-ShareAlike 4.0 license. Some rights reserved.
