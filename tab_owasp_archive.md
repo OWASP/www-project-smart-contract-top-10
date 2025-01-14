@@ -1,9 +1,10 @@
 ---
 title: OWASP_ARCHIVE
 displaytext: OWASP-2023
-layout: null
+layout: col-sidebar
 tab: true
 order: 4
+level: 2
 tags: smartcontract
 ---
 
