@@ -1,6 +1,6 @@
 ---
-title: OWASP 2023
-displaytext: OWASP 2023
+title: OWASP-2023
+displaytext: OWASP-2023
 layout: null
 tab: true
 order: 4
