@@ -28,7 +28,9 @@ Individuals and organizations that provide a significant contribution to the pro
 ## How to reach out
 
 - Give us feedback / suggestions / report bugs on [GitHub](https://github.com/OWASP/www-project-smart-contract-top-10)
-- Contact the [project lead](mailto:jinson@owasp.org)
+- Contact the project leads:
+    - [Jinson](mailto:jinson@owasp.org)
+    - [Shashank](mailto:shashank@credshields.com)
 
 ## Got an Idea?
 
