@@ -1,9 +1,10 @@
-## SC05:2025 - Reentrancy
+## SC05:2025 - حملات بازگشت‌پذیر (Reentrancy)
 
-### Description:
-A reentrancy attack exploits the vulnerability in smart contracts when a function makes an external call to another contract before updating its own state. This allows the external contract, possibly malicious, to reenter the original function and repeat certain actions, like withdrawals, using the same state. Through such attacks, an attacker can possibly drain all the funds from a contract.
+### توضیحات:
 
-### Example (Vulnerable contract): 
+حمله بازگشت مجدد یا Reentrancy attack درواقع نوعی آسیب پذیری در قراردادهای هوشمند هست به شکلی که با استفاده از تابعی به نام Fallback برای فراخوانی مجدد استفاده می‌کند. این امر می‌تواند منجر به از دست دادن دارایی ها در قرارداد‌های هوشمند شود. در زبان برنامه نویسی سالیدیتی تابعی به نام Fallback  وجود دارد که پارامتی نداشته و به صورت دلخواه برنامه نویس می‌تواند درون کد قراردهد.
+
+### مثال (قرار داد ‌آسیب پذیر): 
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -28,15 +29,17 @@ contract Solidity_Reentrancy {
     }
 }
 ```
-### Impact:
-- The most immediate and impactful consequence is the draining of funds. Attackers exploit vulnerabilities to withdraw more money than they are entitled to, potentially emptying the contract's balance completely.
-- An attacker can trigger unauthorized function calls. This can lead to unintended actions being executed within the contract or related systems.
+### شدت تاثیرگذاری آسیب‌پذیری‌:
 
-### Remediation:
-- Always ensure that every state change happens before calling external contracts, i.e., update balances or code internally before calling external code.
-- Use function modifiers that prevent reentrancy, like Open Zepplin’s Re-entrancy Guard.
+- **خروج غیرمجاز وجوه:** مهاجمان با بهره‌گیری از این آسیب‌پذیری می‌توانند بیشتر از میزان مجاز وجوه برداشت کنند و حتی موجودی قرارداد را کاملاً تخلیه کنند.
+- **فراخوانی غیرمجاز توابع:** مهاجم می‌تواند توابعی را به صورت غیرمجاز فراخوانی کند که این می‌تواند منجر به انجام عملیات ناخواسته در قرارداد یا سیستم‌های مرتبط شود.
 
-### Example (Fixed version):
+### توصیه ها:
+
+- **به‌روزرسانی موجودی‌ها قبل از فراخوانی کد خارجی:** همیشه اطمینان حاصل کنید که هر تغییر وضعیت داخلی قبل از فراخوانی قراردادهای خارجی انجام می‌شود. به عبارت دیگر، ابتدا موجودی‌ها یا کد داخلی را به‌روزرسانی کنید و سپس کد خارجی را فراخوانی کنید.
+- **استفاده از Re-entrancy Guard:** از `ReentrancyGuard` یا محافظ‌های مشابه برای جلوگیری از بازگشت مجدد استفاده کنید، مانند کتابخانه‌های OpenZeppelin.
+
+### مثال (قرارداد اصلاح شده):
 
 ```
 // SPDX-License-Identifier: MIT
@@ -63,6 +66,6 @@ contract Solidity_Reentrancy {
 }
 ```
 
-### Examples of Smart Contracts that fell victim to Reentrancy Attacks:
+### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات بازگشت پذیر شده‌اند:
 1. [Rari Capital](https://etherscan.io/address/0xe16db319d9da7ce40b666dd2e365a4b8b3c18217#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/rari-capital-re-entrancy-vulnerability-analysis-25df2bbfc803)
 2. [Orion Protocol](https://etherscan.io/address/0x98a877bb507f19eb43130b688f522a13885cf604#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/orion-protocol-hack-analysis-missing-reentrancy-protection-f9af6995acb3)
