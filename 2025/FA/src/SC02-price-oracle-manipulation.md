@@ -1,11 +1,22 @@
-# SC02:2025 - Price Oracle Manipulation
+# SC02:2025 - دستکاری در Price Oracle
+<span dir="rtl" align="right">
 
-## Description:
-Price Oracle Manipulation is a critical vulnerability in smart contracts that rely on external data feeds (oracles) to fetch prices or other information. In decentralized finance (DeFi), oracles are used to provide real-world data, such as asset prices, to smart contracts. However, if the data provided by the oracle is manipulated, it can result in incorrect contract behavior. Attackers can exploit oracles by manipulating the data they supply, leading to devastating consequences such as unauthorized withdrawals, excessive leverage, or even draining liquidity pools. Proper safeguards and validation mechanisms are essential to prevent this type of attack.
-Example (Vulnerable contract):
 
-## Example (Vulnerable Contract):
+## توضیحات:
+دستکاری در **Price Oracle** یکی از آسیب‌پذیری‌های جدی در **Smart Contract**‌هایی است که برای دریافت قیمت‌ها یا اطلاعات دیگر به **Oracles** (منابع داده‌ی خارجی) متکی هستند. در **DeFi**، اوراکل‌ها داده‌های دنیای واقعی، مانند قیمت دارایی‌ها، را به قراردادهای هوشمند ارائه می‌کنند.
 
+اما اگر داده‌های ارسال‌شده توسط اوراکل دستکاری شوند، ممکن است منجر به رفتار نادرست قرارداد شود. مهاجمان می‌توانند با تغییر اطلاعاتی که اوراکل تأمین می‌کند، از آن سوءاستفاده کنند و پیامدهای مخربی ایجاد کنند، از جمله:
+
+
+- برداشت‌های غیرمجاز  
+- ایجاد لوریج بیش از حد  
+- تخلیه‌ی استخرهای نقدینگی  
+
+
+</span>
+برای جلوگیری از این نوع حملات، استفاده از **مکانیزم‌های امنیتی و اعتبارسنجی مناسب** ضروری است.
+
+## مثال (قرارداد آسیب‌پذیر):
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -40,18 +51,20 @@ contract PriceOracleManipulation {
 }
 ```
 
-### Impact:
-- Attackers could manipulate the oracle to inflate the price of an asset, allowing them to borrow more funds than they would otherwise be entitled to.
-- In cases where the manipulated price leads to a false assessment of collateral, legitimate users may face liquidation due to incorrect valuations.
-- If an oracle is compromised, attackers can exploit the manipulated data to drain the contract’s liquidity pools or even cause a contract to become insolvent.
+### تاثیرات آسیب پذیری:
+- مهاجمان می‌توانند با دستکاری اوراکل، قیمت یک دارایی را به‌طور مصنوعی افزایش دهند و این امکان را پیدا کنند که بیش از حد مجاز، وام دریافت کنند.
+- در مواردی که قیمت دستکاری‌شده باعث ارزیابی نادرست وثیقه شود، کاربران قانونی ممکن است به دلیل ارزش‌گذاری نادرست، نقد شوند.
+- اگر یک اوراکل به خطر بیفتد، مهاجمان می‌توانند از داده‌های تغییر یافته برای تخلیه‌ی استخرهای نقدینگی قرارداد یا حتی منجر به ورشکستگی آن شوند.
 
-### Remediation:
-- Aggregate data from multiple, independent oracles to reduce the risk of manipulation by any single source.
-- Set minimum and maximum thresholds for the prices received from the oracle to prevent drastic price swings from affecting the contract’s logic.
-- Introduce a time lock between price updates to prevent instant changes that could be exploited by attackers.
-- Use cryptographic proofs to ensure the authenticity of data received from oracles, such as requiring signatures from trusted parties.
 
-### Example (Fixed version):
+### توصیه‌های امنیتی:
+- داده‌ها را از **چندین اوراکل مستقل** تجمیع کنید تا خطر دستکاری توسط یک منبع خاص کاهش یابد.
+- برای قیمت‌های دریافتی از اوراکل، **حداقل و حداکثر مقدار مجاز** تعیین کنید تا نوسانات شدید قیمت، منطق قرارداد را تحت تأثیر قرار ندهد.
+- بین به‌روزرسانی‌های قیمت، **وقفه زمانی (Time Lock)** ایجاد کنید تا از تغییرات آنی که می‌تواند توسط مهاجمان سوءاستفاده شود، جلوگیری شود.
+- از **اثبات‌های رمزنگاری‌شده** برای تأیید صحت داده‌های دریافت‌شده از اوراکل‌ها استفاده کنید، مانند الزام به امضای داده‌ها توسط منابع معتبر.
+
+
+### مثال (قرارداد اصلاح شده):
 
 ```
 // SPDX-License-Identifier: MIT
@@ -86,7 +99,6 @@ contract PriceOracleManipulation {
     }
 }
 ```
-
-### Examples of Smart Contracts that fell victim to Price Oracle Manipulation Attacks :
+###  مثال‌هایی از قراردادهای هوشمندی که قربانی حملات دستکاری اوراکل شدند:
 1. [Polter Finance Hack Analysis](https://blog.solidityscan.com/polter-finance-hack-analysis-c5eaa6dcfd40) 
 2. [BonqDAO Protocol](https://polygonscan.com/address/0x4248fd3e2c055a02117eb13de4276170003ca295#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bonqdao-protocol-hack-analysis-oracle-manipulation-8e6978149a66)
