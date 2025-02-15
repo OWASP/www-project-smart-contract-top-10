@@ -91,5 +91,7 @@ contract Solidity_LogicErrors {
 ```
 
 ### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات منطق تجاری شده‌اند:
+
+
 1. [Level Finance Hack](https://bscscan.com/address/0x9f00fbd6c095d2c542687ed5afb68d9c3fb2f464#code#F11#L165) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/level-finance-hack-analysis-16fda3996ecb)
 2. [BNO Hack](https://bscscan.com/address/0xdca503449899d5649d32175a255a8835a03e4006#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bno-hack-analysis-15436d73e44e)
