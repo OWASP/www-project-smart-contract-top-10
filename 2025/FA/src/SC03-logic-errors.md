@@ -1,14 +1,14 @@
-## SC03:2025 - Logic Errors
+## SC03:2025 - خطاهای منطقی (Logic Errors)
 
-### Description: 
-Logic errors, also known as business logic vulnerabilities, are subtle flaws in smart contracts. They occur when the contract's code does not match its intended behavior. These errors can manifest in various forms, such as faulty math in reward distribution, improper token minting mechanisms, or incorrect calculations in lending and borrowing logic. Such vulnerabilities are elusive, hiding within the contract's logic and waiting to be discovered.
+### توضیحات: 
+خطاهای منطقی که به‌عنوان Business Logic Vulnerabilities هم شناخته می‌شوند، مشکلاتی در Smart Contract‌ها هستند که باعث می‌شوند رفتار واقعی قرارداد با چیزی که انتظار می‌رود، یکی نباشد. این خطاها می‌توانند در بخش‌های مختلفی دیده شوند، مثل اشتباه در توزیع پاداش، نقص در مکانیزم Token Minting، یا محاسبات نادرست در فرآیند وام‌دهی و وام‌گیری. چنین باگ‌هایی معمولاً به‌سادگی دیده نمی‌شوند و ممکن است تا زمانی که اکسپلویت شوند، پنهان بمانند.
 
-#### Examples of Logic Errors:
-1. **Faulty Reward Distribution:** Miscalculations in dividing rewards among stakeholders, leading to unfair allocations.
-2. **Improper Token Minting:** Unchecked or erroneous minting logic that allows infinite or unintended token generation.
-3. **Lending Pool Imbalances:** Incorrect tracking of deposits and withdrawals, causing inconsistencies in pool reserves.
+#### مثال هایی از خطاهای منطقی:
+1. **توزیع نادرست پاداش:** اشتباه در محاسبه و تقسیم پاداش بین ذی‌نفعان که منجر به تخصیص ناعادلانه می‌شود.
+2. **ایراد در مکانیزم مینت کردن توکن ها:** منطق نادرست یا کنترل‌نشده‌ای که امکان تولید بی‌نهایت یا ناخواسته‌ی توکن را فراهم می‌کند.
+3. **عدم تعادل در استخر وام‌دهی:** ثبت نادرست واریزها و برداشت‌ها که باعث ایجاد ناهماهنگی در موجودی استخر می‌شود.
 
-### Example (Vulnerable contract):
+### مثال (قرارداد آسیب پذیر):
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -40,23 +40,24 @@ contract Solidity_LogicErrors {
 }
 ```
 
-### Impact:
-- Logic errors can cause a smart contract to behave unexpectedly or even become entirely unusable. These errors can lead to:
-  - **Loss of Funds:** Incorrect reward distribution or pool imbalances draining contract funds.
-  - **Excessive Token Minting:** Inflating token supply, undermining trust and value.
-  - **Operational Failures:** Contracts failing to perform their intended functions.
-- These consequences can result in significant financial and operational losses for users and stakeholders.
+### شدت آسیب پذیری:
+- خطاهای منطقی می‌توانند باعث رفتار غیرمنتظره Smart Contract شوند یا حتی آن را کاملاً از کار بیندازند. این مشکلات ممکن است منجر به موارد زیر شوند:
 
-### Remediation:
-- Always validate your code by writing comprehensive test cases that cover all possible business logic scenarios.
-- Conduct thorough code reviews and audits to identify and fix potential logic errors.
-- Document the intended behavior of each function and module, and compare it to the actual implementation to ensure alignment.
-- Implement guardrails, such as:
-  - Safe math libraries to prevent calculation errors.
-  - Proper checks and balances for token minting.
-  - Auditable reward distribution algorithms.
+  - **از دست رفتن دارایی‌ها:** توزیع نادرست پاداش یا عدم تعادل در استخرها که باعث خالی شدن موجودی قرارداد می‌شود.
+  - **ایجاد بیش از حد توکن:** افزایش غیرمجاز عرضه‌ی توکن که اعتماد و ارزش آن را از بین می‌برد.
+  - **اختلال در عملکرد:** ناتوانی قرارداد در اجرای وظایف مورد انتظار.
+- این پیامدها می‌توانند ضررهای مالی و عملیاتی جدی برای کاربران و  به همراه داشته باشند.
 
-### Example (Fixed version):
+### توصیه های امنیتی:
+- همیشه کد خود را با نوشتن تست کیس‌های جامع بررسی کنید تا تمامی سناریوهای ممکن در Business Logic پوشش داده شوند.
+- کد را به‌دقت بازبینی و حسابرسی کنید تا خطاهای منطقی احتمالی شناسایی و برطرف شوند.
+- رفتار مورد انتظار هر تابع و ماژول را مستند کنید و آن را با پیاده‌سازی واقعی مقایسه کنید تا مطمئن شوید که تطابق دارند.
+- مکانیزم‌های کنترلی را پیاده‌سازی کنید، از جمله:
+  -  استفاده از کتابخانه Safe Math  برای جلوگیری از خطاهای محاسباتی.
+  - جرای کنترل‌های امنیتی و محدودیت‌های لازم برای Token Minting.
+  - استفاده از الگوریتم‌های شفاف و قابل حسابرسی برای توزیع پاداش..
+
+### مثال (ورژن اصلاح شده):
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -89,6 +90,6 @@ contract Solidity_LogicErrors {
 }
 ```
 
-### Examples of Smart Contracts That Fell Victim to Business Logic Attacks:
+### مثال‌هایی از قراردادهای هوشمندی که قربانی حملات منطق تجاری شده‌اند:
 1. [Level Finance Hack](https://bscscan.com/address/0x9f00fbd6c095d2c542687ed5afb68d9c3fb2f464#code#F11#L165) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/level-finance-hack-analysis-16fda3996ecb)
 2. [BNO Hack](https://bscscan.com/address/0xdca503449899d5649d32175a255a8835a03e4006#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bno-hack-analysis-15436d73e44e)
