@@ -1,9 +1,11 @@
-# SC04:2025 - Lack of Input Validation
+# SC04:2025 - عدم اعتبارسنجی ورودی‌ها (Lack of Input Validation)
 
-## Description:
-Input validation ensures that a smart contract processes only valid and expected data. When contracts fail to validate incoming inputs, they inadvertently expose themselves to security risks such as logic manipulation, unauthorized access, and unexpected behavior.For example, if a contract assumes user inputs are always valid without verification, attackers can exploit this trust to introduce malicious data. This lack of input validation compromises the security and reliability of the smart contract.
+## توضیحات:
+اعتبارسنجی ورودی‌ها به قراردادهای هوشمند کمک می‌کند تا فقط داده‌های معتبر و مورد انتظار را پردازش کنند. اگر یک قرارداد ورودی‌های دریافتی را بررسی نکند، به‌طور ناخواسته در معرض خطراتی مانند دستکاری منطق، دسترسی غیرمجاز و رفتارهای غیرمنتظره قرار می‌گیرد.
 
-## Example (Vulnerable Contract):
+برای مثال، اگر قرارداد فرض کند که ورودی‌های کاربران همیشه درست هستند و بدون بررسی آن‌ها را پردازش کند، مهاجمان می‌توانند از این ضعف سوءاستفاده کرده و داده‌های مخرب را وارد سیستم کنند. این موضوع امنیت و قابلیت اطمینان قرارداد هوشمند را به خطر می‌اندازد.
+
+## مثال (قرارداد آسیب پذیر):
 
 ```
 // SPDX-License-Identifier: MIT
@@ -18,19 +20,19 @@ contract Solidity_LackOfInputValidation {
     }
 }
 ```
-### Impact:
-- Attackers can manipulate inputs to drain funds, steal tokens, or cause other financial harm.
-- Improper inputs can corrupt state variables, leading to unreliable and insecure contract behavior.
-- Attackers may exploit the contract to perform unauthorized transactions or operations, impacting both the user and the broader system.
+### تاثیرات:
+- مهاجمان می‌توانند با دستکاری ورودی‌ها، وجوه را تخلیه کنند، توکن‌ها را سرقت کنند یا آسیب‌های مالی دیگر ایجاد کنند.
+- ورود داده‌های نادرست می‌تواند متغیرهای وضعیت قرارداد را خراب کرده و منجر به رفتار ناپایدار و ناامن شود.
+- مهاجمان ممکن است از این ضعف برای انجام تراکنش‌ها یا عملیات غیرمجاز سوءاستفاده کنند، که می‌تواند هم کاربران و هم کل سیستم را تحت تأثیر قرار دهد.
 
-### Remediation:
-- Ensure that inputs conform to the expected type.
-- Validate that inputs fall within acceptable boundaries.
-- Ensure that only authorized entities can invoke specific functions.
-- Validate the structure of inputs, such as address formats or string lengths.
-- Always halt execution and provide clear error messages when inputs fail validation.
+### راهکارهای امنیتی:
+- اطمینان حاصل کنید که ورودی‌ها با نوع داده‌ی مورد انتظار مطابقت دارند.
+- بررسی کنید که مقادیر ورودی در محدوده‌ی مجاز قرار داشته باشند.
+- مطمئن شوید که فقط کاربران یا قراردادهای مجاز بتوانند توابع خاصی را فراخوانی کنند..
+- ساختار ورودی‌ها، مانند فرمت آدرس‌ها یا طول رشته‌ها را اعتبارسنجی کنید.
+- همیشه در صورت نامعتبر بودن ورودی‌ها، اجرای قرارداد را متوقف کرده و پیام‌های خطای شفاف ارائه دهید.
 
-### Example (Fixed version):
+### مثال (قرارداد اصلاح شده):
 ```
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -54,6 +56,6 @@ contract LackOfInputValidation {
     }
 }
 ```
-### Examples of Smart Contracts that fell victim to attacks due to Lack of Input Validation:
+### نمونه‌هایی از قراردادهای هوشمندی که به دلیل نبود اعتبارسنجی ورودی مورد حمله قرار گرفتند:
 1. [Convergence Finance](https://etherscan.io/address/0x2b083beaaC310CC5E190B1d2507038CcB03E7606#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/convergence-finance-hack-analysis-12e6acd9ea08)
 2. [Socket Gateway](https://etherscan.io/address/0x3a23F943181408EAC424116Af7b7790c94Cb97a5#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/socket-gateway-hack-analysis-b0e9567f7d3e)
