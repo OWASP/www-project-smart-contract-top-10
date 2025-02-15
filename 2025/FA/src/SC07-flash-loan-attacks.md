@@ -1,24 +1,25 @@
-## SC07:2025 - Flash Loan Attacks
+## SC07:2025 - حملات وام فلش (Flash Loan Attacks)
 
-### Description: 
-Flash loan attacks exploit the ability to borrow large sums of funds without collateral within a single transaction. These attacks leverage the atomic nature of blockchain transactions, where all operations must succeed or fail together. By combining flash loans with other vulnerabilities like oracle manipulation, reentrancy, or faulty logic, attackers can manipulate contract behavior and drain funds.
+### توضیحات: 
 
-#### Examples of Flash Loan Exploits:
-1. **Oracle Manipulation:** Using borrowed funds to skew price oracles, triggering under-collateralized liquidations.
-2. **Liquidity Pool Draining:** Leveraging flash loans to remove liquidity or exploit poorly designed AMM mechanics.
-3. **Arbitrage Exploits:** Exploiting price discrepancies across platforms by manipulating liquidity.
+حملات وام فلش از قابلیت دریافت مقادیر زیادی وام بدون وثیقه در یک تراکنش واحد سوءاستفاده می‌کنند. این حملات از ویژگی Atomic در تراکنش‌ها بهره می‌برند، یعنی یا کل عملیات انجام می‌شود یا هیچ بخشی از آن اجرا نمی‌شود. اگر یک مرحله از تراکنش با شکست مواجه شود، کل فرآیند لغو شده و هیچ تغییری در وضعیت قرارداد ایجاد نمی‌شود. مهاجمان می‌توانند وام‌های فلش را با آسیب‌پذیری‌هایی مانند حمله oracle manipulation، حمله reentrancy یا faulty logic ترکیب کنند تا رفتار قرارداد را تغییر داده و وجوه را تخلیه کنند
 
-### Impact:
-- **Loss of Funds:** Exploiters can drain protocol reserves or manipulate collateralized loans to steal assets.
-- **Market Disruptions:** Temporary price manipulation or liquidity depletion affecting users and platforms.
-- **Ecosystem Damage:** Loss of trust in protocols, resulting in reduced user adoption and financial impact.
+#### مثال‌هایی از سوءاستفاده از وام فلش:
+1. **دستکاری اوراکل:** استفاده از وجوه قرض‌گرفته‌شده برای دستکاری قیمت اوراکل و ایجاد نقدینگی ساختگی، که منجر به لیکوئید شدن ناعادلانه یا دریافت وام‌های غیرمجاز می‌شود.
+2. **به سرقت بردن وجوه استخر نقدینگی:** هره‌گیری از وام‌های فلش برای خارج کردن نقدینگی یا سوءاستفاده از نقص‌های طراحی در AMM.
+3. **اکسپلویت اربیتراژ** ایجاد اختلاف قیمت بین پلتفرم‌ها از طریق دستکاری نقدینگی
 
-### Remediation:
-- **Avoid reliance on flash loans in critical logic:** Restrict sensitive functions to operate only within validated and predictable conditions.
-- **Robust Oracle Design:** Use time-weighted average prices (TWAP) or decentralized oracles resistant to manipulation.
-- **Comprehensive Testing:** Include tests simulating flash loan scenarios and edge cases.
-- **Access Control:** Limit access to critical functions to prevent unauthorized or malicious transactions.
+### تاثیرات:
+- **از دست رفتن سرمایه:** مهاجمان می‌توانند ذخایر پروتکل را تخلیه کرده یا با دستکاری وام‌های وثیقه‌گذاری شده، دارایی‌ها را سرقت کنند.
+- **اختلال در بازار:** تغییرات موقتی قیمت یا کاهش نقدینگی که کاربران و پلتفرم‌ها را تحت تأثیر قرار می‌دهد
+- **آسیب به اکوسیستم:** کاهش اعتماد کاربران به پروتکل‌ها که منجر به کاهش پذیرش و تأثیرات مالی منفی می‌شود.
 
-### Examples of Flash Loan Exploits:
+### راهکارهای جلوگیری:
+- **اجتناب از وابستگی به وام‌های فلش در منطق حیاتی:*از وابستگی به وام‌های فلش در بخش‌های حیاتی قرارداد، مانند فرآیندهای تصمیم‌گیری، بررسی وثیقه، محاسبه قیمت دارایی‌ها و نقد کردن دارایی‌ها، خودداری کنید. این بخش‌ها باید به‌گونه‌ای طراحی شوند که بدون نیاز به وام فلش و در شرایطی پایدار و قابل پیش‌بینی اجرا شوند تا از سوءاستفاده مهاجمان جلوگیری شود.
+- **طراحی مقاوم اوراکل:** از مکانیزم‌هایی مانند میانگین وزنی زمان‌دار قیمت‌ها (TWAP) یا اوراکل‌های غیرمتمرکز که در برابر دستکاری مقاوم هستند، استفاده کنید.
+- **تست جامع:** سناریوهای وام فلش و حالت‌های مرزی (Edge Cases) را در تست‌های خود شبیه‌سازی کنید تا از رفتار صحیح قرارداد در شرایط مختلف اطمینان حاصل شود.
+- **Access Control:** دسترسی به عملکردهای حیاتی قرارداد را محدود کنید تا از انجام تراکنش‌های غیرمجاز یا مخرب جلوگیری شود.
+
+### مثال هایی از اکسپلویت شدن flash loans :
 1. [UwUlend Hack](https://blog.solidityscan.com/uwulend-hack-analysis-77eb9181a717): A Comprehensive [Hack Analysis](https://blog.solidityscan.com/uwulend-hack-analysis-77eb9181a717)
 2. [Doughfina Hack](https://blog.solidityscan.com/doughfina-hack-analysis-685ed56adb19): A Comprehensive [Hack Analysis](https://blog.solidityscan.com/doughfina-hack-analysis-685ed56adb19)
