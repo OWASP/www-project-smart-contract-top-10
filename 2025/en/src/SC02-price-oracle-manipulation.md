@@ -2,7 +2,6 @@
 
 ## Description:
 Price Oracle Manipulation is a critical vulnerability in smart contracts that rely on external data feeds (oracles) to fetch prices or other information. In decentralized finance (DeFi), oracles are used to provide real-world data, such as asset prices, to smart contracts. However, if the data provided by the oracle is manipulated, it can result in incorrect contract behavior. Attackers can exploit oracles by manipulating the data they supply, leading to devastating consequences such as unauthorized withdrawals, excessive leverage, or even draining liquidity pools. Proper safeguards and validation mechanisms are essential to prevent this type of attack.
-Example (Vulnerable contract):
 
 ## Example (Vulnerable Contract):
 
