@@ -38,7 +38,7 @@ contract Solidity_InsecureRandomness {
 - Insecure randomness can be exploited by attackers to gain an unfair advantage in games, lotteries, and any other contracts that rely on random number generation. By predicting or manipulating the supposedly random outcomes, attackers can influence the results in their favor. This can lead to unfair wins, financial losses for other participants, and a general lack of trust in the smart contract's integrity and fairness. 
 
 ### Remediation:
-- Using oracles (Oraclize) as external sources of randomness. Care should be taken while trusting the Oracle. Multiple Oracles can also be used.
+- Using oracles (Oraclize) as external sources of randomness — Care should be taken while trusting the Oracle. Multiple Oracles can also be used.
 - Using Commitment Schemes — A cryptographic primitive that uses a commit-reveal approach can be followed. It also has wide applications in coin flipping, zero-knowledge proofs, and secure computation. E.g.: RANDAO.
 - Chainlink VRF — It is a provably fair and verifiable random number generator (RNG) that enables smart contracts to access random values without compromising security or usability.
 - The Signidice Algorithm — Suitable for PRNG in applications involving two parties using cryptographic signatures.
