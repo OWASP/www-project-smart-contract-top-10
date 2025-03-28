@@ -24,3 +24,4 @@ Individuals that provided a significant contribution to the project:
 |  Hansen Wong | - | [Twitter](https://twitter.com/hansen_wong) |
 |  Pratik Lagaskar | [CredShields](https://credshields.com/) |  [LinkedIn](https://www.linkedin.com/in/pratik-lagaskar), [Twitter](https://x.com/warlordsam077) |
 |  Nehal Pillai | [CredShields](https://credshields.com/) | [LinkedIn](https://www.linkedin.com/in/nehal-pillai), [Twitter](https://x.com/nehal_10_0) |
+| Sobhan Shokri | - | [LinkedIn](https://www.linkedin.com/in/xdevman/), [Twitter](https://x.com/xdevman) |
