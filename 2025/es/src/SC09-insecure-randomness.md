@@ -1,19 +1,19 @@
-## SC09:2025 - Insecure Randomness
+## SC09:2025 - Aleatoriedad Insegura
 
-### Description:
-Random number generators are essential for applications like gambling, game-winner selection, and random seed generation. On Ethereum, generating random numbers is challenging due to its deterministic nature. Since Solidity cannot produce true random numbers, it relies on pseudorandom factors. Additionally, complex calculations in Solidity are costly in terms of gas.
+### Descripción:
+Los generadores de números aleatorios son esenciales para aplicaciones como juegos de azar, selección de ganadores y generación de semillas aleatorias. En Ethereum, generar números aleatorios es un desafío debido a su naturaleza determinista. Dado que Solidity no puede producir números verdaderamente aleatorios, depende de factores pseudoaleatorios. Además, los cálculos complejos en Solidity son costosos en términos de gas.
 
-*Insecure Mechanisms Create Random Numbers in Solidity: Developers often use block-related methods to generate random numbers, such as:*
-  - block.timestamp: Current block timestamp.
-  - blockhash(uint blockNumber): Hash of a given block (only for the last 256 blocks).
-  - block.difficulty: Current block difficulty.
-  - block.number: Current block number.
-  - block.coinbase: Address of the current block’s miner.
+*Mecanismos Inseguros para Crear Números Aleatorios en Solidity: Los desarrolladores suelen utilizar métodos relacionados con bloques para generar números aleatorios, como:*
+  - `block.timestamp`: Marca de tiempo del bloque actual.
+  - `blockhash(uint blockNumber)`: Hash de un bloque determinado (solo para los últimos 256 bloques).
+  - `block.difficulty`: Dificultad del bloque actual.
+  - `block.number`: Número del bloque actual.
+  - `block.coinbase`: Dirección del minero del bloque actual.
     
-These methods are insecure because miners can manipulate them, affecting the contract’s logic.
+Estos métodos son inseguros porque los mineros pueden manipularlos, afectando la lógica del contrato.
 
-### Example (Vulnerable contract):
-```
+### Ejemplo (Contrato Vulnerable):
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
@@ -23,30 +23,31 @@ contract Solidity_InsecureRandomness {
     function guess(uint256 _guess) public {
         uint256 answer = uint256(
             keccak256(
-                abi.encodePacked(block.timestamp, block.difficulty, msg.sender) // Using insecure mechanisms for random number generation
+                abi.encodePacked(block.timestamp, block.difficulty, msg.sender) // Uso de mecanismos inseguros para la generación de números aleatorios
             ) 
         );
 
         if (_guess == answer) {
             (bool sent,) = msg.sender.call{value: 1 ether}("");
-            require(sent, "Failed to send Ether");
+            require(sent, "Fallo al enviar Ether");
         }
     }
 }
 ```
-### Impact:
-- Insecure randomness can be exploited by attackers to gain an unfair advantage in games, lotteries, and any other contracts that rely on random number generation. By predicting or manipulating the supposedly random outcomes, attackers can influence the results in their favor. This can lead to unfair wins, financial losses for other participants, and a general lack of trust in the smart contract's integrity and fairness. 
 
-### Remediation:
-- Using oracles (Oraclize) as external sources of randomness. Care should be taken while trusting the Oracle. Multiple Oracles can also be used.
-- Using Commitment Schemes — A cryptographic primitive that uses a commit-reveal approach can be followed. It also has wide applications in coin flipping, zero-knowledge proofs, and secure computation. E.g.: RANDAO.
-- Chainlink VRF — It is a provably fair and verifiable random number generator (RNG) that enables smart contracts to access random values without compromising security or usability.
-- The Signidice Algorithm — Suitable for PRNG in applications involving two parties using cryptographic signatures.
-- Bitcoin Block Hashes — Oracles like BTCRelay can be used which act as a bridge between Ethereum and Bitcoin. Contracts on Ethereum can request future block hashes from the Bitcoin Blockchain as a source of entropy. It should be noted that this approach is not safe against the miner incentive problem and should be implemented with caution.
+### Impacto:
+- La aleatoriedad insegura puede ser explotada por atacantes para obtener una ventaja injusta en juegos, loterías y cualquier otro contrato que dependa de la generación de números aleatorios. Al predecir o manipular los resultados supuestamente aleatorios, los atacantes pueden influir en los resultados a su favor. Esto puede llevar a victorias injustas, pérdidas financieras para otros participantes y una falta general de confianza en la integridad y equidad del contrato inteligente.
 
-### Example (Fixed version):
+### Remediación:
+- Uso de oráculos (Oraclize) como fuentes externas de aleatoriedad. Se debe tener cuidado al confiar en el oráculo, y se pueden utilizar múltiples oráculos.
+- Uso de esquemas de compromiso — Un primitivo criptográfico que utiliza un enfoque de compromiso-revelación. Tiene amplias aplicaciones en lanzamiento de monedas, pruebas de conocimiento cero y computación segura. Ejemplo: RANDAO.
+- Chainlink VRF — Es un generador de números aleatorios (RNG) verificable y demostrablemente justo que permite a los contratos inteligentes acceder a valores aleatorios sin comprometer la seguridad o la usabilidad.
+- Algoritmo Signidice — Adecuado para PRNG en aplicaciones que involucran dos partes usando firmas criptográficas.
+- Hashes de bloques de Bitcoin — Se pueden utilizar oráculos como BTCRelay, que actúan como un puente entre Ethereum y Bitcoin. Los contratos en Ethereum pueden solicitar hashes de bloques futuros de la blockchain de Bitcoin como fuente de entropía. Cabe señalar que este enfoque no es seguro contra el problema de incentivos de los mineros y debe implementarse con precaución.
 
-```
+### Ejemplo (Versión Corregida):
+
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
@@ -65,7 +66,7 @@ contract Solidity_InsecureRandomness is VRFConsumerBase {
     }
 
     function requestRandomNumber() public returns (bytes32 requestId) {
-        require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK");
+        require(LINK.balanceOf(address(this)) >= fee, "No hay suficiente LINK");
         return requestRandomness(keyHash, fee);
     }
 
@@ -74,15 +75,15 @@ contract Solidity_InsecureRandomness is VRFConsumerBase {
     }
 
     function guess(uint256 _guess) public {
-        require(randomResult > 0, "Random number not generated yet");
+        require(randomResult > 0, "Número aleatorio no generado aún");
         if (_guess == randomResult) {
             (bool sent,) = msg.sender.call{value: 1 ether}("");
-            require(sent, "Failed to send Ether");
+            require(sent, "Fallo al enviar Ether");
         }
     }
 }
 ```
 
-### Examples of Smart Contracts That Fell Victim to Insecure Randomness Attacks:
-1. [Roast Football Hack](https://bscscan.com/address/0x26f1457f067bf26881f311833391b52ca871a4b5#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/roast-football-hack-analysis-e9316170c443)
-2. [FFIST Hack](https://bscscan.com/address/0x80121da952a74c06adc1d7f85a237089b57af347#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/ffist-hack-analysis-9cb695c0fad9)
+### Ejemplos de Contratos Inteligentes que fueron Víctimas de Ataques por Aleatoriedad Insegura:
+1. [Hack de Roast Football](https://bscscan.com/address/0x26f1457f067bf26881f311833391b52ca871a4b5#code) : Un Análisis Completo del [Hack](https://blog.solidityscan.com/roast-football-hack-analysis-e9316170c443)
+2. [Hack de FFIST](https://bscscan.com/address/0x80121da952a74c06adc1d7f85a237089b57af347#code) : Un Análisis Completo del [Hack](https://blog.solidityscan.com/ffist-hack-analysis-9cb695c0fad9)

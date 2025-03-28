@@ -1,12 +1,11 @@
-# SC02:2025 - Price Oracle Manipulation
+# SC02:2025 -  Manipulación del precio del oráculo
 
 ## Descripción:
-Price Oracle Manipulation es una vulnerabilidad crítica en contratos inteligentes que dependen de fuentes de datos externas (oráculos) para obtener precios u otra información. En las finanzas descentralizadas (DeFi), los oráculos se utilizan para proporcionar datos del mundo real, como los precios de los activos, a los contratos inteligentes. Sin embargo, si se manipulan los datos proporcionados por el oráculo, puede dar lugar a un comportamiento incorrecto del contrato. Los atacantes pueden aprovecharse de los oráculos manipulando los datos que suministran, lo que puede tener consecuencias devastadoras, como retiradas no autorizadas, apalancamiento excesivo o incluso vaciar las reservas de liquidez. Para evitar este tipo de ataques, es esencial disponer de salvaguardas y mecanismos de validación adecuados.
-Ejemplo (contrato vulnerable):
+Price Oracle Manipulation es una vulnerabilidad crítica en contratos inteligentes que dependen de fuentes de datos externas (oráculos) para obtener precios u otra información. En las finanzas descentralizadas (DeFi), los oráculos se utilizan para proporcionar datos del mundo real, como los precios de los activos, a los contratos inteligentes. Sin embargo, si se manipulan los datos proporcionados por el oráculo, puede dar lugar a un comportamiento incorrecto del contrato. Los atacantes pueden aprovecharse de los oráculos manipulando los datos que proporcionan, lo que puede tener consecuencias devastadoras, como retiradas no autorizadas, apalancamiento excesivo o incluso vaciar las reservas de liquidez. Para evitar este tipo de ataques, es esencial contar con las salvaguardas y los mecanismos de validación adecuados.
 
-## Ejemplo (Contrato vulnerable):
+## Ejemplo (contrato vulnerable):
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
@@ -49,11 +48,11 @@ contract PriceOracleManipulation {
 - Agregue datos de múltiples oráculos independientes para reducir el riesgo de manipulación por una sola fuente.
 - Establecer umbrales mínimos y máximos para los precios recibidos del oráculo para evitar que las oscilaciones drásticas de precios afecten a la lógica del contrato.
 - Introducir un bloqueo temporal entre las actualizaciones de precios para evitar cambios instantáneos que puedan ser aprovechados por los atacantes.
-- Utilizar pruebas criptográficas para garantizar la autenticidad de los datos recibidos de los oráculos, como requerir firmas de partes de confianza.
+- Utilizar pruebas criptográficas para garantizar la autenticidad de los datos recibidos de los oráculos, como requerir firmas de terceros de confianza.
 
 ### Ejemplo (Contrato Mejorado):
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 

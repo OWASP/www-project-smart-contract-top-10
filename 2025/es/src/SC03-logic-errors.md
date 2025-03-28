@@ -1,14 +1,14 @@
-## SC03:2025 - Logic Errors
+## SC03:2025 - Errores lógicos
 
-### Description: 
-Logic errors, also known as business logic vulnerabilities, are subtle flaws in smart contracts. They occur when the contract's code does not match its intended behavior. These errors can manifest in various forms, such as faulty math in reward distribution, improper token minting mechanisms, or incorrect calculations in lending and borrowing logic. Such vulnerabilities are elusive, hiding within the contract's logic and waiting to be discovered.
+### Descripción: 
+Los errores de lógica, también conocidos como vulnerabilidades de lógica de negocio, son fallos sutiles en los contratos inteligentes. Ocurren cuando el código del contrato no coincide con su comportamiento previsto. Estos errores pueden manifestarse de varias formas, como matemáticas defectuosas en la distribución de recompensas, mecanismos inadecuados de emisión de tokens, o cálculos incorrectos en la lógica de préstamos y empréstitos. Estas vulnerabilidades son escurridizas, se esconden dentro de la lógica del contrato y esperan a ser descubiertas.
 
-#### Examples of Logic Errors:
-1. **Faulty Reward Distribution:** Miscalculations in dividing rewards among stakeholders, leading to unfair allocations.
-2. **Improper Token Minting:** Unchecked or erroneous minting logic that allows infinite or unintended token generation.
-3. **Lending Pool Imbalances:** Incorrect tracking of deposits and withdrawals, causing inconsistencies in pool reserves.
+#### Ejemplos de errores lógicos:
+1. **Distribución defectuosa de recompensas:** Cálculos erróneos al dividir las recompensas entre las partes interesadas, lo que lleva a asignaciones injustas.
+2. **Emisión incorrecta de fichas:** Lógica de emisión errónea o no comprobada que permite la generación infinita o no intencionada de tokens.
+3. **Desequilibrios en el fondo de préstamos:** Seguimiento incorrecto de depósitos y retiradas, causando incoherencias en las reservas del fondo.
 
-### Example (Vulnerable contract):
+### Ejemplo (contrato vulnerable):
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -25,38 +25,38 @@ contract Solidity_LogicErrors {
     function withdraw(uint256 amount) public {
         require(userBalances[msg.sender] >= amount, "Insufficient balance");
 
-        // Faulty calculation: Incorrectly reducing the user's balance without updating the total lending pool
-        userBalances[msg.sender] -= amount;
+        // Cálculo erróneo: Reducción incorrecta del saldo del usuario sin actualizar el conjunto total de préstamos
+        userBalances[msg.sender] -= importe;
 
-        // This should update the total lending pool, but it's omitted here.
+        // Esto debería actualizar el saldo total de préstamos, pero se omite aquí.
 
         payable(msg.sender).transfer(amount);
     }
 
     function mintReward(address to, uint256 rewardAmount) public {
-        // Faulty minting logic: Reward amount not validated
+        // Lógica de emisión defectuosa: Importe de recompensa no validado
         userBalances[to] += rewardAmount;
     }
 }
 ```
 
-### Impact:
-- Logic errors can cause a smart contract to behave unexpectedly or even become entirely unusable. These errors can lead to:
-  - **Loss of Funds:** Incorrect reward distribution or pool imbalances draining contract funds.
-  - **Excessive Token Minting:** Inflating token supply, undermining trust and value.
-  - **Operational Failures:** Contracts failing to perform their intended functions.
-- These consequences can result in significant financial and operational losses for users and stakeholders.
+### Impacto:
+- Los errores lógicos pueden provocar que un contrato inteligente se comporte de forma inesperada o incluso quede totalmente inutilizable. Estos errores pueden llevar a:
+  - **Pérdida de fondos:** Distribución incorrecta de recompensas o desequilibrios en el pool que drenan los fondos del contrato.
+  - **Excesiva emisión de tokens:** Inflación del suministro de tokens, socavando la confianza y el valor.
+  - **Fallos operativos:** los contratos no cumplen las funciones previstas.
+- Estas consecuencias pueden dar lugar a importantes pérdidas financieras y operativas para los usuarios y las partes interesadas.
 
-### Remediation:
-- Always validate your code by writing comprehensive test cases that cover all possible business logic scenarios.
-- Conduct thorough code reviews and audits to identify and fix potential logic errors.
-- Document the intended behavior of each function and module, and compare it to the actual implementation to ensure alignment.
-- Implement guardrails, such as:
-  - Safe math libraries to prevent calculation errors.
-  - Proper checks and balances for token minting.
-  - Auditable reward distribution algorithms.
+### Solución:
+- Valide siempre su código escribiendo casos de prueba exhaustivos que cubran todos los posibles escenarios de lógica empresarial.
+- Realice revisiones y auditorías exhaustivas del código para identificar y corregir posibles errores lógicos.
+- Documente el comportamiento previsto de cada función y módulo, y compárelo con la implementación real para garantizar la alineación.
+- Implemente controles, como:
+  - Bibliotecas matemáticas seguras para evitar errores de cálculo.
+  - Controles y balances adecuados para la emisión de tokens.
+  - Algoritmos de distribución de recompensas auditables.
 
-### Example (Fixed version):
+### Ejemplo (Contrato Mejorado):
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -71,9 +71,9 @@ contract Solidity_LogicErrors {
     }
 
     function withdraw(uint256 amount) public {
-        require(userBalances[msg.sender] >= amount, "Insufficient balance");
+        require(userBalances[msg.sender] >= amount, "Saldo Insuficiente");
 
-        // Correctly reducing the user's balance and updating the total lending pool
+        // Reducir correctamente el saldo del usuario y actualizar el saldo total de préstamos
         userBalances[msg.sender] -= amount;
         totalLendingPool -= amount;
 
@@ -81,14 +81,14 @@ contract Solidity_LogicErrors {
     }
 
     function mintReward(address to, uint256 rewardAmount) public {
-        require(rewardAmount > 0, "Reward amount must be positive");
+        require(rewardAmount > 0, "El importe de la recompensa debe ser positivo");
 
-        // Safeguarded minting logic
+          // Lógica de emisión protegida
         userBalances[to] += rewardAmount;
     }
 }
 ```
 
-### Examples of Smart Contracts That Fell Victim to Business Logic Attacks:
+### Ejemplos de Contratos Inteligentes Víctimas de Errores lógicos:
 1. [Level Finance Hack](https://bscscan.com/address/0x9f00fbd6c095d2c542687ed5afb68d9c3fb2f464#code#F11#L165) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/level-finance-hack-analysis-16fda3996ecb)
-2. [BNO Hack](https://bscscan.com/address/0xdca503449899d5649d32175a255a8835a03e4006#code) : A Comprehensive [Hack Analysis](https://blog.solidityscan.com/bno-hack-analysis-15436d73e44e)
+2. [BNO Hack](https://bscscan.com/address/0xdca503449899d5649d32175a255a8835a03e4006#code) : Un completo [Hack Análisis](https://blog.solidityscan.com/bno-hack-analysis-15436d73e44e)

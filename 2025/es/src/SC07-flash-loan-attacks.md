@@ -1,24 +1,24 @@
-## SC07:2025 - Flash Loan Attacks
+## SC07:2025 - Ataques de Flash Loans (Préstamos Relámpago) 
 
-### Description: 
-Flash loan attacks exploit the ability to borrow large sums of funds without collateral within a single transaction. These attacks leverage the atomic nature of blockchain transactions, where all operations must succeed or fail together. By combining flash loans with other vulnerabilities like oracle manipulation, reentrancy, or faulty logic, attackers can manipulate contract behavior and drain funds.
+### Descripción  
+Los ataques de FL (Flash Loans) explotan la capacidad de pedir prestadas grandes sumas de fondos sin necesidad de colateral dentro de una única transacción. Estos ataques aprovechan la naturaleza atómica de las transacciones en blockchain, donde todas las operaciones deben completarse con éxito o revertirse en su totalidad. Al combinar los FL con otras vulnerabilidades como la manipulación de oráculos, la reentrada o lógica defectuosa, los atacantes pueden alterar el comportamiento de los contratos y drenar fondos.  
 
-#### Examples of Flash Loan Exploits:
-1. **Oracle Manipulation:** Using borrowed funds to skew price oracles, triggering under-collateralized liquidations.
-2. **Liquidity Pool Draining:** Leveraging flash loans to remove liquidity or exploit poorly designed AMM mechanics.
-3. **Arbitrage Exploits:** Exploiting price discrepancies across platforms by manipulating liquidity.
+#### Ejemplos de Explotaciones de FL  
+1. **Manipulación de Oráculos:** Uso de fondos prestados para distorsionar oráculos de precios, desencadenando liquidaciones sin suficiente colateral.  
+2. **Drenaje de Pools de Liquidez:** Aprovechamiento de FL para retirar liquidez o explotar mecanismos mal diseñados de AMM.  
+3. **Explotaciones de Arbitraje:** Manipulación de la liquidez para explotar discrepancias de precios entre plataformas.  
 
-### Impact:
-- **Loss of Funds:** Exploiters can drain protocol reserves or manipulate collateralized loans to steal assets.
-- **Market Disruptions:** Temporary price manipulation or liquidity depletion affecting users and platforms.
-- **Ecosystem Damage:** Loss of trust in protocols, resulting in reduced user adoption and financial impact.
+### Impacto  
+- **Pérdida de Fondos:** Los atacantes pueden drenar reservas de protocolos o manipular préstamos colateralizados para robar activos.  
+- **Disrupción del Mercado:** Manipulación temporal de precios o agotamiento de liquidez que afecta a usuarios y plataformas.  
+- **Daño al Ecosistema:** Pérdida de confianza en los protocolos, lo que reduce la adopción por parte de los usuarios y genera impacto financiero.  
 
-### Remediation:
-- **Avoid reliance on flash loans in critical logic:** Restrict sensitive functions to operate only within validated and predictable conditions.
-- **Robust Oracle Design:** Use time-weighted average prices (TWAP) or decentralized oracles resistant to manipulation.
-- **Comprehensive Testing:** Include tests simulating flash loan scenarios and edge cases.
-- **Access Control:** Limit access to critical functions to prevent unauthorized or malicious transactions.
+### Remediación  
+- **Evitar la dependencia de FL en lógica crítica:** Restringir las funciones sensibles para operar solo en condiciones validadas y predecibles.  
+- **Diseño Robusto de Oráculos:** Utilizar precios promedio ponderados en el tiempo (TWAP) u oráculos descentralizados resistentes a la manipulación.  
+- **Pruebas Exhaustivas:** Incluir pruebas que simulen escenarios de FL y casos extremos.  
+- **Control de Acceso:** Limitar el acceso a funciones críticas para evitar transacciones no autorizadas o maliciosas.  
 
-### Examples of Flash Loan Exploits:
-1. [UwUlend Hack](https://blog.solidityscan.com/uwulend-hack-analysis-77eb9181a717): A Comprehensive [Hack Analysis](https://blog.solidityscan.com/uwulend-hack-analysis-77eb9181a717)
-2. [Doughfina Hack](https://blog.solidityscan.com/doughfina-hack-analysis-685ed56adb19): A Comprehensive [Hack Analysis](https://blog.solidityscan.com/doughfina-hack-analysis-685ed56adb19)
+### Ejemplos de Explotaciones de FL  
+1. [Hack de UwUlend](https://blog.solidityscan.com/uwulend-hack-analysis-77eb9181a717): Un análisis detallado del [ataque](https://blog.solidityscan.com/uwulend-hack-analysis-77eb9181a717).  
+2. [Hack de Doughfina](https://blog.solidityscan.com/doughfina-hack-analysis-685ed56adb19): Un análisis detallado del [ataque](https://blog.solidityscan.com/doughfina-hack-analysis-685ed56adb19).  
