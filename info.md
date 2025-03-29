@@ -10,8 +10,8 @@
 * [Github Repository](https://github.com/OWASP/www-project-smart-contract-top-10)
 
 ### Translations
-* [Spanish](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2023/es/src)
-* [Chinese](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2023/zh-cn/src)
+* [Spanish](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/es/src)
+* [Chinese](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/zh-cn/src)
 * [Persian (Farsi)](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/FA/src)
 
 ### License
