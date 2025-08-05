@@ -4,19 +4,19 @@
 未经检查的外部调用是一种安全漏洞，指的是合约在调用另一个合约或地址时，没有正确验证调用结果。在以太坊中，当一个合约调用另一个合约时，被调用的合约可能会默默失败，而不会抛出异常。如果调用合约没有检查返回值，就可能错误地假设调用成功，尽管实际情况是失败的。这种情况可能导致合约状态不一致，并为攻击者提供利用漏洞的机会。
 
 ### 举例 (包含漏洞的合约):
-```
+```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity ^0.8.0;
 
 contract Solidity_UncheckedExternalCall {
     address public owner;
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
     }
 
-    function forward(address callee, bytes _data) public {
-        require(callee.delegatecall(_data));
+    function forward(address callee, bytes memory _data) public {
+        callee.delegatecall(_data);
     }
 }
 ```
@@ -28,11 +28,11 @@ contract Solidity_UncheckedExternalCall {
 - 始终检查 `send()` 或 `call()` 的返回值，并在返回 `false` 时进行适当处理。
 
 ### 举例 (已修复版本):
-```
+```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0; 
+pragma solidity ^0.8.0;
 
-contract Solidity_UncheckedExternalCall {
+contract Solidity_CheckedExternalCall {
     address public owner;
 
     constructor() {

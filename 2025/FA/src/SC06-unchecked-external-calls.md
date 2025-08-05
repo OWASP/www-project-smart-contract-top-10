@@ -4,19 +4,19 @@
 این آسیب‌پذیری زمانی رخ می‌دهد که یک قرارداد هوشمند در اتریوم یک فراخوانی خارجی به قرارداد یا آدرس دیگری ارسال می‌کند بدون اینکه نتیجه‌ی آن فراخوانی را بررسی کند. در اتریوم، زمانی که یک قرارداد، قراردادی دیگر را فراخوانی می‌کند، ممکن است قرارداد فراخوانی‌شده بدون ایجاد استثنا (Exception) با شکست مواجه شود. اگر قرارداد فراخوانی‌کننده نتیجه‌ی این فراخوانی را بررسی نکند، ممکن است به اشتباه فرض کند که عملیات موفق بوده است، حتی اگر شکست خورده باشد. این موضوع می‌تواند منجر به ناسازگاری در حالت (state) قرارداد و ایجاد آسیب‌پذیری‌هایی شود که مهاجمان می‌توانند از آن سوءاستفاده کنند.
 
 ### مثال (قرارداد آسیب پذیر):
-```
+```solidity
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.4.24;
+pragma solidity ^0.8.0;
 
 contract Solidity_UncheckedExternalCall {
     address public owner;
 
-    constructor() public {
+    constructor() {
         owner = msg.sender;
     }
 
-    function forward(address callee, bytes _data) public {
-        require(callee.delegatecall(_data));
+    function forward(address callee, bytes memory _data) public {
+        callee.delegatecall(_data);
     }
 }
 ```
@@ -29,11 +29,11 @@ contract Solidity_UncheckedExternalCall {
 - همیشه نتیجه‌ی فراخوانی‌های send() یا call() را بررسی کنید تا در صورت بازگشت false به درستی مدیریت شود.
 
 ### مثال (قرار داد اصلاح شده):
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0; 
 
-contract Solidity_UncheckedExternalCall {
+contract Solidity_CheckedExternalCall {
     address public owner;
 
     constructor() {
