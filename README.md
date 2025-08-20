@@ -2,6 +2,13 @@
 
 # [OWASP Smart Contract Top 10](https://owasp.org/www-project-smart-contract-top-10/)
 
+> ## Join the OWASP Smart Contract Security Slack
+> [![Slack](https://img.shields.io/badge/slack-join%20chat-611f69?logo=slack&logoColor=white)](https://owasp.slack.com/archives/C07MNDE6TPZ)
+> 
+> _Discussions and Support_
+
+-----
+
 ## About the Smart Contract Top 10
 
 The OWASP Smart Contract Top 10 (2025) is a standard awareness document providing Web3 developers and security teams with insights into the top 10 vulnerabilities found in smart contracts.
