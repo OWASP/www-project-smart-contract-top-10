@@ -1,0 +1,22 @@
+audience:
+  - builder
+  - defender
+leaders:
+  - name: Jinson Varghese Behanan
+    email: jinson@owasp.org
+    github: jinsonvarghese
+  - name: Shashank
+    github: Shashank-In
+level: 2
+name: OWASP Smart Contract Top 10
+pitch: Welcome to the OWASP Top Ten for Smart Contracts
+repositories:
+  - name: www-project-smart-contract-top-10
+    url: https://github.com/OWASP/www-project-smart-contract-top-10
+    description: OWASP Smart Contract Top 10
+tags:
+  - smartcontract
+  - custom-tag-1
+  - custom-tag-2
+type: documentation
+website: https://owasp.org/www-project-smart-contract-top-10
