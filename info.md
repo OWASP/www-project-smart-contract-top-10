@@ -13,6 +13,7 @@
 * [Spanish](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/es/src)
 * [Chinese](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/zh-cn/src)
 * [Persian (Farsi)](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/FA/src)
+* [Korean](https://github.com/OWASP/www-project-smart-contract-top-10/tree/main/2025/kr/src)
 
 ### License
 * [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
