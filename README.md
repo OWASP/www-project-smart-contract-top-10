@@ -12,13 +12,13 @@
 
 ## About the Smart Contract Top 10
 
-The **OWASP Smart Contract Top 10 : 2026** is a standard awareness document that aims to provide Web3 developers and security teams with insights into the top 10 vulnerabilities found in smart contracts. It is a **sub‑project of the broader [OWASP Smart Contract Security (OWASP SCS) initiative](https://scs.owasp.org/)**.
+The **OWASP Smart Contract Top 10: 2026** is a standard awareness document that aims to provide Web3 developers and security teams with insights into the top 10 vulnerabilities found in smart contracts. It is a **sub‑project of the broader [OWASP Smart Contract Security (OWASP SCS) initiative](https://scs.owasp.org/)**.
 
 It serves as a reference to ensure that smart contracts are secured against the most critical weaknesses exploited or discovered in recent years. The **Smart Contract Top 10** can be used alongside other OWASP SCS projects to ensure comprehensive risk coverage:
 
-- **OWASP SC Top 10 live site (2026): [https://scs.owasp.org/sctop10/](https://scs.owasp.org/sctop10/)** 
-- **OWASP SC Weakness Enumeration (SCWE):** https://scs.owasp.org/SCWE/  
-- **OWASP SCS Checklist:** https://scs.owasp.org/checklists/  
+- **OWASP SC Weakness Enumeration (SCWE): [https://scs.owasp.org/SCWE/](https://scs.owasp.org/SCWE/)**
+- **OWASP SCS Checklist: [https://scs.owasp.org/checklists/](https://scs.owasp.org/checklists/)**
+- **OWASP SC Top 10 Live Site (2026): [https://scs.owasp.org/sctop10/](https://scs.owasp.org/sctop10/)**
 
 Use the Top 10 for:
 - **Awareness**: Understand the most common and critical vulnerabilities affecting smart contracts.
