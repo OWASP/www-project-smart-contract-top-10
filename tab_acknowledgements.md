@@ -26,3 +26,5 @@ Individuals that provided a significant contribution to the project:
 |  Nehal Pillai | [CredShields](https://credshields.com/) | [LinkedIn](https://www.linkedin.com/in/nehal-pillai), [Twitter](https://x.com/nehal_10_0) |
 | Sobhan Shokri | - | [LinkedIn](https://www.linkedin.com/in/xdevman/), [Twitter](https://x.com/xdevman) |
 | whackur | [DSRV](https://dsrv.com) | [LinkedIn](https://www.linkedin.com/in/whackur/) |
+| Siddharth Neekher | [CredShields](https://credshields.com/) | [LinkedIn](http://www.linkedin.com/in/siddharth-neekher-340519117), [Twitter](https://x.com/sidartdigital) |
+|  Shreya Berry| [CredShields](https://credshields.com/) | [LinkedIn](https://www.linkedin.com/in/shreya-berry/), [Twitter](https://x.com/ShreyaBerry2) |

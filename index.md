@@ -87,7 +87,7 @@ On that page you’ll find:
 ## Licensing
 The OWASP Smart Contract Top 10 (2026) is [licensed](https://github.com/OWASP/www-project-smart-contract-top-10/blob/main/LICENSE.md) under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons Attribution-ShareAlike 4.0 license. Some rights reserved.
 
-![license](assets/images/by-nc-sa.png)
+<img src="assets/images/by-nc-sa.png" alt="license" width="100" />
 
 ## Project Leaders
 - [Jinson Varghese Behanan](mailto:jinson@owasp.org) (Twitter: [@JinsonCyberSec](https://x.com/JinsonCyberSec))
