@@ -77,7 +77,7 @@ Web3HackHub documents breaches from 2011 onward, enabling analysis of evolving a
 
 The complete **methodology, ranking logic, and external data sources** for the 2026 Top 10 are documented on the OWASP SCS site:
 
-- **Methodology & Data for the 2026 Top 10: https://scs.owasp.org/sctop10/data-sources/**
+- **Methodology & Data for the 2026 Top 10:** [https://scs.owasp.org/sctop10/data-sources/](https://scs.owasp.org/sctop10/data-sources/)
 
 On that page you’ll find:
 - How the practitioner survey is designed and how category rankings are aggregated.  
