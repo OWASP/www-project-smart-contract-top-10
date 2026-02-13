@@ -20,7 +20,8 @@ It serves as a reference to ensure that smart contracts are secured against the 
 
 - **OWASP SC Top 10 live site (2026):** [https://scs.owasp.org/sctop10/](https://scs.owasp.org/sctop10/)
 - **OWASP SC Weakness Enumeration (SCWE):** [https://scs.owasp.org/SCWE/](https://scs.owasp.org/SCWE/)
-- **OWASP SCS Checklist:** [https://scs.owasp.org/checklists/](https://scs.owasp.org/checklists/)  
+- **OWASP SCS Checklist:** [https://scs.owasp.org/checklists/](https://scs.owasp.org/checklists/)
+- **OWASP Top 15: Web3 Attack Vectors (Beyond Smart Contracts)** [https://scs.owasp.org/sctop10/Web3-Attack-Vectors-Top15/](https://scs.owasp.org/sctop10/Web3-Attack-Vectors-Top15/)
 
 Use the Top 10 for:
 - **Awareness**: Understand the most common and critical vulnerabilities affecting smart contracts.
