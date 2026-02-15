@@ -1,5 +1,5 @@
 ---
-title: OWASP_ARCHIVE
+title: OWASP_ARCHIVE_2025
 displaytext: OWASP-2025
 layout: col-sidebar
 tab: true
@@ -13,28 +13,16 @@ tags: smartcontract
 
 ## About the Smart Contract Top 10
 
-The OWASP Smart Contract Top 10 (2026) is a standard awareness document providing Web3 developers and security teams with insights into the top 10 vulnerabilities found in smart contracts. The 2025 edition is the first published version; the 2026 list is a forward-looking update based on 2025 incident data and practitioner input.
+The OWASP Smart Contract Top 10 (2025) is a standard awareness document providing Web3 developers and security teams with insights into the top 10 vulnerabilities found in smart contracts.
 
 It serves as a reference to ensure that smart contracts are secured against the most critical weaknesses exploited or discovered in recent years. The **Smart Contract Top 10** can be used alongside other smart contract security projects to ensure comprehensive risk coverage. Visit [scs.owasp.org](https://scs.owasp.org/) for more details on OWASP Smart Contract Security Projects.
 
 ## Changes
 
+
 ![OWASP 2023 to 2025 Changes](assets/images/Mapping2023-2025.png)
 
-### 2026 Top 10 (Forward-Looking)
-
-* SC01:2026 - [Access Control Vulnerabilities](2026/en/src/SC01-access-control-vulnerabilities.md)
-* SC02:2026 - [Business Logic Vulnerabilities](2026/en/src/SC02-business-logic-vulnerabilities.md)
-* SC03:2026 - [Price Oracle Manipulation](2026/en/src/SC03-price-oracle-manipulation.md)
-* SC04:2026 - [Flash Loan–Facilitated Attacks](2026/en/src/SC04-flash-loan-facilitated-attacks.md)
-* SC05:2026 - [Lack of Input Validation](2026/en/src/SC05-lack-of-input-validation.md)
-* SC06:2026 - [Unchecked External Calls](2026/en/src/SC06-unchecked-external-calls.md)
-* SC07:2026 - [Arithmetic Errors](2026/en/src/SC07-arithmetic-errors.md)
-* SC08:2026 - [Reentrancy Attacks](2026/en/src/SC08-reentrancy-attacks.md)
-* SC09:2026 - [Integer Overflow and Underflow](2026/en/src/SC09-integer-overflow-underflow.md)
-* SC10:2026 - [Proxy & Upgradeability Vulnerabilities](2026/en/src/SC10-proxy-and-upgradeability-vulnerabilities.md)
-
-### 2025 Top 10 (Published)
+### Top 10
 
 * SC01:2025 - [Access Control Vulnerabilities](2025/en/src/SC01-access-control.md)
 * SC02:2025 - [Price Oracle Manipulation](2025/en/src/SC02-price-oracle-manipulation.md)
@@ -99,7 +87,7 @@ After analyzing **149 security incidents from SolidityScan's Web3HackHub (2024)*
 ## Licensing
 The OWASP Smart Contract Top 10 (2025) is [licensed](https://github.com/OWASP/www-project-smart-contract-top-10/blob/8083e976d6d18013dce2d5e6e62f98e632151a09/LICENSE.md) under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons Attribution-ShareAlike 4.0 license. Some rights reserved.
 
-![license](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)
+<img src="assets/images/by-nc-sa.png" alt="license" width="100" />
 
 ## Project Leaders
 - [Jinson Varghese Behanan](mailto:jinson@owasp.org) (Twitter: [@JinsonCyberSec](https://x.com/JinsonCyberSec))

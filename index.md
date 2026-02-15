@@ -18,9 +18,10 @@ The **OWASP Smart Contract Top 10 : 2026** is a standard awareness document that
 
 It serves as a reference to ensure that smart contracts are secured against the most critical weaknesses exploited or discovered in recent years. The **Smart Contract Top 10** can be used alongside other OWASP SCS projects to ensure comprehensive risk coverage:
 
-- **OWASP SC Top 10 live site (2026): [https://scs.owasp.org/sctop10/](https://scs.owasp.org/sctop10/)** 
-- **OWASP SC Weakness Enumeration (SCWE):** https://scs.owasp.org/SCWE/  
-- **OWASP SCS Checklist:** https://scs.owasp.org/checklists/  
+- **OWASP SC Top 10 live site (2026):** [https://scs.owasp.org/sctop10/](https://scs.owasp.org/sctop10/)
+- **OWASP SC Weakness Enumeration (SCWE):** [https://scs.owasp.org/SCWE/](https://scs.owasp.org/SCWE/)
+- **OWASP SCS Checklist:** [https://scs.owasp.org/checklists/](https://scs.owasp.org/checklists/)
+- **OWASP Top 15: Web3 Attack Vectors (Beyond Smart Contracts)** [https://scs.owasp.org/sctop10/Web3-Attack-Vectors-Top15/](https://scs.owasp.org/sctop10/Web3-Attack-Vectors-Top15/)
 
 Use the Top 10 for:
 - **Awareness**: Understand the most common and critical vulnerabilities affecting smart contracts.
@@ -77,7 +78,7 @@ Web3HackHub documents breaches from 2011 onward, enabling analysis of evolving a
 
 The complete **methodology, ranking logic, and external data sources** for the 2026 Top 10 are documented on the OWASP SCS site:
 
-- **Methodology & Data for the 2026 Top 10: https://scs.owasp.org/sctop10/data-sources/**
+- **Methodology & Data for the 2026 Top 10:** [https://scs.owasp.org/sctop10/data-sources/](https://scs.owasp.org/sctop10/data-sources/)
 
 On that page you’ll find:
 - How the practitioner survey is designed and how category rankings are aggregated.  
@@ -87,7 +88,7 @@ On that page you’ll find:
 ## Licensing
 The OWASP Smart Contract Top 10 (2026) is [licensed](https://github.com/OWASP/www-project-smart-contract-top-10/blob/main/LICENSE.md) under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), the Creative Commons Attribution-ShareAlike 4.0 license. Some rights reserved.
 
-![license](assets/images/by-nc-sa.png)
+<img src="assets/images/by-nc-sa.png" alt="license" width="100" />
 
 ## Project Leaders
 - [Jinson Varghese Behanan](mailto:jinson@owasp.org) (Twitter: [@JinsonCyberSec](https://x.com/JinsonCyberSec))
